@@ -37,6 +37,77 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-001
+
+```yaml
+session_id: 2026-05-20-001
+agent: claude-opus-4-7
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T00:35:00+12:00
+ended: 2026-05-20T01:30:00+12:00
+focus: Complete priority-1 Curation Backlog items — foundational concepts (safety, AGI, deceptive alignment, interpretability, consciousness in AI, x-risk, s-risk), NZ-specific (AI Forum NZ), and Pacific perspectives.
+commits:
+  - 9889840   # note(concepts): 8 priority-1 concepts
+  - 16a7505   # note(organizations): AI Forum NZ
+  - 8114cf6   # chore(meta): backlog hygiene
+  - (this commit: chore: close session 2026-05-20-001)
+notes_created:
+  - ai-safety
+  - agi
+  - deceptive-alignment
+  - interpretability
+  - consciousness-in-ai
+  - existential-risk
+  - suffering-risk
+  - ai-forum-nz
+  - pacific-perspectives-on-technology
+notes_modified:
+  - meta-curation-backlog
+  - meta-session-log
+backlog_items_completed:
+  - bl-002   # AI Safety
+  - bl-003   # AGI
+  - bl-005   # Deceptive Alignment
+  - bl-006   # Interpretability
+  - bl-009   # Consciousness in AI
+  - bl-010   # Existential Risk / X-Risk
+  - bl-011   # Suffering Risk / S-Risk
+  - bl-015   # AI Forum NZ
+  - bl-016   # Pacific Perspectives on Technology
+backlog_items_added: []
+open_issues: []
+escalations:
+  - Pacific Perspectives note is non-Pacific-authored. Flagged with perspective:indigenous + needs_attention for review by Pacific scholars before status promotion beyond draft.
+next_session_seed: |
+  Priority-1 is complete. Next session should:
+    1. Start priority-2 (people: Bengio, Hinton, Dario Amodei, Hassabis, Bostrom,
+       Yudkowsky, Chalmers, Mitchell, Gebru, Toner).
+    2. Or pick priority-2 organizations (OpenAI, Google DeepMind, CHAI, FLI, CAIS,
+       Apollo Research, METR, UK/US AISI).
+    3. Begin promoting a subset of seed notes from `status: draft` to
+       `status: reviewed`. Cannot self-review — requires either a new model session
+       (different `authored_by:`) or a human reviewer per Curation Workflow.
+    4. Consider whether to push the vault to a remote (GitHub private repo) for
+       backup; this still requires the user's decision.
+```
+
+## Body — 2026-05-20-001
+
+Continuation from session 2026-05-19-001 (the vault kickoff). User directed: "继续 priority-1" — complete remaining priority-1 backlog.
+
+Work completed:
+- **7 concept notes**: AI Safety (umbrella, broader than alignment), AGI (with definitional disputes), Deceptive Alignment (Hubinger 2019 + Anthropic Sleeper Agents 2024), Interpretability (mechanistic + behavioral, distinct sub-fields), Consciousness in AI (Butlin et al. 2023 framework), Existential Risk (Bostrom/Ord/Yudkowsky), Suffering Risk (Tomasik / CLR).
+- **1 org note**: AI Forum NZ (founded 2017, industry-led NZ AI convening).
+- **1 concept note (Pacific)**: Pacific Perspectives on Technology — flagged as authored by a non-Pacific AI and requiring Pacific-scholar review before promotion.
+
+Total: 9 notes across the priority-1 batch.
+
+Decisions made this session:
+- For "Pacific Perspectives" the note is presented with `perspective: indigenous` and an explicit caution about authorship — following the same discipline as `Whakapapa and Relational Ontology`. The vault must not appropriate; it presents and links to authoritative external sources while flagging for Pacific-scholar correction.
+- Interpretability is split conceptually into mechanistic vs behavioral but kept as one concept note. If sub-fields develop separately in the vault (e.g., a "Sparse Autoencoders" or "Circuits Thread" note), they will link via `subclass-of::` or `part-of::`.
+
+---
+
 ## 2026-05-19-001
 
 ```yaml
