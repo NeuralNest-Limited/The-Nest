@@ -1,9 +1,9 @@
-# Obsidian local config / cache — per-instance, not vault content
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/cache
-.obsidian/plugins/*/data.json
-.obsidian/plugins/*/main.js.map
+# Obsidian local config — each user configures their own appearance,
+# enabled plugins, and workspace. Vault content is what's shared.
+.obsidian/
+
+# Private notes / drafts not intended for the public repo
+_Private/
 
 # OS noise
 .DS_Store
