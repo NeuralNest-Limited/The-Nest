@@ -1,0 +1,20 @@
+# Obsidian local config / cache — per-instance, not vault content
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/*/data.json
+.obsidian/plugins/*/main.js.map
+
+# OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor noise
+.vscode/
+.idea/
+
+# Local-only ephemera
+_Local/
+*.tmp
