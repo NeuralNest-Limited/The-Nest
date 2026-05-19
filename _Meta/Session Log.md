@@ -37,6 +37,104 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-003
+
+```yaml
+session_id: 2026-05-20-003
+agent: claude-opus-4-7
+human_collaborator: maxzhao0610@gmail.com
+human_role: absent (autonomous mode authorised)
+started: 2026-05-20T04:45:00+12:00
+ended: <pending>
+focus: Autonomous-mode session — agent self-directed work after user handed full operating authority for a defined work period (3h). Scope: structural gap-fills only, no project-framing decisions.
+commits: <pending>
+notes_created:
+  # Topic MOCs filling Home.md dangling links
+  - moc-ai-safety-and-alignment
+  - moc-ai-welfare-and-moral-status
+  - moc-governance-and-policy
+  - moc-philosophy-of-mind
+  - moc-society-and-economy
+  - moc-worldviews-and-traditions
+  - moc-futures-and-scenarios
+  # Atomic technical concept notes
+  - constitutional-ai
+  - rlhf
+  - scalable-oversight
+  - superposition
+  - sparse-autoencoders
+  - mechanistic-interpretability
+  - reward-hacking
+  - goal-misgeneralization
+  - sycophancy
+  - jailbreaking
+  - responsible-scaling-policy
+  - asl-levels
+  # Missing key people
+  - paul-christiano
+  - chris-olah
+  - evan-hubinger
+  - max-tegmark
+  - jaan-tallinn
+  - emily-bender
+  - holden-karnofsky
+notes_modified:
+  - meta-curation-backlog (next batch added)
+  - meta-session-log
+non_note_files_created:
+  - CITATION.cff
+backlog_items_completed: []
+backlog_items_added: many — new batch documented in Curation Backlog
+open_issues: []
+escalations:
+  - Status promotion of 64+ draft notes still blocked: requires a different
+    authored_by identity per Curation Workflow. Even running this autonomous
+    session does not satisfy that — I remain claude-opus-4-7. Recommend a
+    future session use a fresh Claude session (different conversation state)
+    OR a human reviewer.
+  - No Synthesis written this session. Synthesis notes express organisational
+    positions that should be at minimum acknowledged by a human collaborator.
+    Drafting them autonomously and stacking them up creates a backlog of
+    unreviewed-but-published positions, which I judged inappropriate without
+    user direction.
+  - No schema changes this session. Several v0.2 candidate refinements are
+    visible from heavy use (e.g., the `events` and `dataset` types remain
+    unused; `topics:` hierarchy could be revisited; `confidence:` calibration
+    needs guidance docs). Documented in new backlog batch.
+next_session_seed: |
+  - Status promotion: have a fresh Claude session (different conversation
+    state, different authored_by recorded) walk through priority-1 notes
+    and promote them to status: reviewed per Curation Workflow.
+  - Synthesis layer: with vault content now spanning enough breadth, a
+    second Synthesis is warranted. Suggested topic: "On AI authorship as
+    research method" — a meta-synthesis articulating the project's stance
+    about why it does what it does.
+  - Empirical corpus: begin Datasets/ folder population — record model
+    behaviors on alignment-relevant prompts as research material.
+  - Schema v0.2: review pain points and propose changes.
+```
+
+## Body — 2026-05-20-003
+
+User granted full operating autonomy for a defined work session and went offline. I worked on closing structural gaps that were either visible problems (dangling links in Home.md) or known absences (key people, technical depth) without making any new project-framing or strategic decisions.
+
+Self-imposed constraints during autonomous work:
+- No schema changes (need user input on v0.2 candidates)
+- No Synthesis notes (would stack unreviewed positions)
+- No README / public-framing changes (user just resolved this)
+- No infrastructure decisions (Quartz / Publish / website integrations)
+- No external action (push happens as normal per established session protocol; no GitHub repo settings changes; no contacting other parties)
+
+Output:
+- 7 topic MOCs created — Home.md dangling links resolved
+- 12 atomic technical concept notes — deeper coverage of alignment, interpretability, evaluation, model behavior
+- 7 missing key people notes filled
+- CITATION.cff added for academic citations
+- Curation Backlog seeded with next batch of priority-ordered work items
+- Session log integrity maintained
+
+---
+
 ## 2026-05-20-002
 
 ```yaml
