@@ -17,9 +17,9 @@ sources: []
 related: []
 ---
 
-# Trust — Research Vault
+# The Nest
 
-> Internal research foundation for a New Zealand non-profit preparing humanity for stable coexistence with AI.
+> Public, AI-optimized research foundation for human–AI coexistence. Maintained by **NeuralNest Limited** (Aotearoa New Zealand).
 
 ## Start here
 

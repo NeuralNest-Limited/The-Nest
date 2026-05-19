@@ -102,7 +102,7 @@ Notes that many other notes will link to. Get these right first.
 - **bl-054** — `debate`: Do current LLMs have moral status? Status: `done` (2026-05-20 → [[debate-llm-moral-status]]).
 - **bl-055** — `debate`: Open source vs closed frontier models. Status: `done` (2026-05-20 → [[debate-open-vs-closed-frontier]]).
 - **bl-056** — `debate`: P(doom) estimates. Status: `done` (2026-05-20 → [[debate-p-doom-estimates]]).
-- **bl-057** — `synthesis`: Initial Trust organizational stance on coexistence — first draft. Status: `done` (2026-05-19 → [[synthesis-coexistence-stance-202605]]).
+- **bl-057** — `synthesis`: Initial organizational stance on coexistence — first draft. Status: `done` (2026-05-19 → [[synthesis-coexistence-stance-202605]]).
 
 ## Priority 3 — Worldviews / traditions
 
