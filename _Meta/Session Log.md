@@ -37,6 +37,117 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-002
+
+```yaml
+session_id: 2026-05-20-002
+agent: claude-opus-4-7
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T01:35:00+12:00
+ended: 2026-05-20T04:30:00+12:00
+focus: Clear all of Priority 2, 3, and 4 in one session — 41 notes across people, orgs, papers, policies, debates, worldviews, and historical comparative cases.
+commits:
+  - 5f8d0d8   # note(people): 10 priority-2 people
+  - 44d48c9   # note(organizations): 10 priority-2 orgs
+  - 89be59c   # note(papers): 6 priority-2 papers
+  - 2b39b62   # note(policies): 4 priority-2 policies
+  - d8f0a44   # note(debates): 3 priority-3 debates
+  - b4293f6   # note(concepts): 3 priority-3 worldviews
+  - 751fd85   # note(concepts): 5 priority-4 comparative history
+  - d427058   # chore(meta): mark backlog complete
+  - (this commit: chore: close session 2026-05-20-002)
+notes_created:
+  # People (10) — Priority 2
+  - yoshua-bengio
+  - geoffrey-hinton
+  - dario-amodei
+  - demis-hassabis
+  - nick-bostrom
+  - eliezer-yudkowsky
+  - david-chalmers
+  - margaret-mitchell
+  - timnit-gebru
+  - helen-toner
+  # Orgs (10) — Priority 2
+  - openai
+  - google-deepmind
+  - chai
+  - future-of-life-institute
+  - govai
+  - center-for-ai-safety
+  - apollo-research
+  - metr
+  - uk-aisi
+  - us-aisi
+  # Papers (6) — Priority 2
+  - hubinger-risks-from-learned-optimization-2019
+  - bostrom-superintelligence-2014
+  - russell-human-compatible-2019
+  - christiano-deep-rl-from-human-preferences-2017
+  - bender-stochastic-parrots-2021
+  - hubinger-sleeper-agents-2024
+  # Policies (4) — Priority 2
+  - us-executive-order-on-ai-2023
+  - china-generative-ai-measures-2023
+  - uk-aisi-mandate
+  - unesco-recommendation-ai-ethics-2021
+  # Debates (3) — Priority 3
+  - debate-llm-moral-status
+  - debate-open-vs-closed-frontier
+  - debate-p-doom-estimates
+  # Worldviews (3) — Priority 3
+  - buddhist-perspectives-on-ai-sentience
+  - christian-theological-responses-to-ai
+  - islamic-bioethics-and-ai
+  # Comparative History (5) — Priority 4
+  - printing-press-as-comparative-case
+  - industrial-revolution-labor-lessons
+  - nuclear-technology-governance
+  - internet-governance-trajectory
+  - asilomar-recombinant-dna-precedent
+backlog_items_completed:
+  - bl-018, bl-019, bl-020, bl-021, bl-022, bl-023, bl-025, bl-026, bl-027, bl-028
+  - bl-030, bl-031, bl-033, bl-034, bl-035, bl-036, bl-037, bl-038, bl-039, bl-040
+  - bl-042, bl-043, bl-044, bl-045, bl-046, bl-047
+  - bl-049, bl-050, bl-051, bl-052
+  - bl-054, bl-055, bl-056
+  - bl-058, bl-059, bl-060
+  - bl-061, bl-062, bl-063, bl-064, bl-065
+backlog_items_added: []
+open_issues: []
+escalations:
+  - Worldview notes (Buddhist, Christian, Islamic) authored by non-tradition-affiliated AI — needs_attention flags set; should be reviewed by scholars within each tradition before status promotion.
+  - All 64 content notes (across all sessions to date) remain at status:draft. Status promotion to "reviewed" requires a second authored_by identity per Curation Workflow.
+next_session_seed: |
+  All 65 Curation Backlog items complete. The vault now has comprehensive
+  coverage at draft quality across people, orgs, papers, policies, debates,
+  worldviews, and comparative cases.
+  
+  Next session priorities:
+    1. Status promotion: a second AI session (different authored_by, fresh
+       context) or human reviewer should pick a subset of notes and promote
+       from draft to reviewed per Curation Workflow §"Review protocol".
+    2. New backlog generation: with priority-1-through-4 complete, new
+       research tasks should be drafted. Suggested directions:
+         - Deeper technical notes (specific alignment methods, interpretability
+           sub-techniques, evaluation benchmarks)
+         - More NZ / Pacific specific people, orgs, and policy detail
+         - Empirical corpus building (recording Claude/GPT actual behaviors
+           on alignment-relevant prompts as Datasets)
+         - Cross-cutting MOCs as topic coverage matures
+    3. Schema iteration: consider whether any v0.1 schema decisions need
+       revision after a session of heavy use. Document any pain points in
+       _Schema/ as proposed v0.2 changes.
+```
+
+## Body — 2026-05-20-002
+
+Continuation from session 2026-05-20-001. User directive: complete all remaining Priority 2, 3, 4 items in a single session. Total: 41 new notes.
+
+Style discipline maintained — each note ~300-500 word body, type-appropriate structure, full frontmatter, typed relationships to existing notes. Three worldview notes (Buddhist, Christian, Islamic) flagged with needs_attention as authored from outside the tradition. Comparative-history notes intentionally framed for AI-transition analogy use.
+
+---
+
 ## 2026-05-20-001
 
 ```yaml
