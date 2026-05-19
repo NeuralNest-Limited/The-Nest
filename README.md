@@ -7,16 +7,16 @@ last_reviewed: 2026-05-20
 authored_by: claude-opus-4-7
 ---
 
-# Nest
+# The Nest
 
 > A public, AI-optimized research foundation for human–AI coexistence.
 > Maintained by **NeuralNest Limited** (Aotearoa New Zealand).
 
-`nest` is the bedrock knowledge base for NeuralNest's research programme on the stable, peaceful coexistence of humans and AI ("carbon-based and silicon-based life"). It collects concepts, people, organizations, papers, policies, debates, and comparative cases relevant to that question — at draft quality, openly, with transparent provenance.
+**The Nest** is the bedrock knowledge base for NeuralNest's research programme on the stable, peaceful coexistence of humans and AI ("carbon-based and silicon-based life"). It collects concepts, people, organizations, papers, policies, debates, and comparative cases relevant to that question — at draft quality, openly, with transparent provenance.
 
 ## What makes this vault unusual
 
-Three design choices distinguish `nest` from a typical knowledge base:
+Three design choices distinguish The Nest from a typical knowledge base:
 
 1. **AI-optimized over human-optimized.** Notes are written to be consumed by LLM agents working with RAG and structured query: atomic concepts per file, rich YAML frontmatter, typed inline relationships (`supports::`, `contradicts::`, `defined-by::`, etc.), and a controlled vocabulary. Human readers can read it too — the structure is just primarily in service of machine retrieval.
 2. **Neutral aggregator with explicit synthesis.** The main vault is descriptive: it records the full spectrum of positions on contested questions and labels each one's perspective (`cautious`, `accelerationist`, `decel`, `indigenous`, `religious`, etc.). The `_Synthesis/` folder is the *only* place where NeuralNest expresses positions, and every synthesis entry carries full author and endorsement provenance.
@@ -60,10 +60,11 @@ All content notes are at `status: draft`. They have been authored carefully but 
 
 This vault is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You are free to copy, adapt, remix, and re-use the material — including commercially — provided you give appropriate credit to **NeuralNest Limited** and indicate any changes. See `LICENSE` for the full terms.
 
-If you build research, products, policy briefings, or educational material that draws substantially on this vault, citing `NeuralNest Limited — Nest` with a link to the repository is appreciated.
+If you build research, products, policy briefings, or educational material that draws substantially on this vault, citing `NeuralNest Limited — The Nest` with a link to the repository is appreciated.
 
 ## About NeuralNest Limited
 
-NeuralNest Limited is a New Zealand-registered company dedicated to preparing humanity for stable, peaceful coexistence with AI. The vault is our foundational research infrastructure; downstream work — policy submissions, public-facing materials, partnerships with Māori and Pacific scholars, and research collaborations — builds on it.
+NeuralNest Limited is a New Zealand-registered company based in Auckland. The Nest is our open research contribution to the question of human–AI coexistence — shared under CC BY 4.0 for any researcher, organization, or AI agent to build on.
 
-`https://github.com/NeuralNest-Limited`
+More about NeuralNest: <https://neuralnest.info>
+GitHub: <https://github.com/NeuralNest-Limited>
