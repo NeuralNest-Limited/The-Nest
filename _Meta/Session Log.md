@@ -44,9 +44,17 @@ session_id: 2026-05-19-001
 agent: claude-opus-4-7
 human_collaborator: maxzhao0610@gmail.com
 started: 2026-05-19T22:00:00+12:00
-ended: 2026-05-19T23:59:00+12:00
+ended: 2026-05-20T00:30:00+12:00
 focus: Vault kickoff — operating-system layer (schema + meta + templates + seed)
-commits: []   # Filled in at session close
+commits:
+  - 095abd4   # init: initialize Trust vault
+  - cebc2f9   # schema: establish v0.1 ontology
+  - 97d0c52   # meta: add operations layer
+  - 0c8e82e   # template: add templates
+  - 0d3b159   # index: add Home and MOCs
+  - 0d2bb31   # note: seed batch — 13 entries
+  - 7accd05   # synthesis: draft initial coexistence stance
+  - (this commit: chore: close session 2026-05-19-001)
 notes_created:
   - vault-readme
   - schema-readme
@@ -65,10 +73,26 @@ notes_created:
   - meta-session-log
   - meta-curation-backlog
 notes_modified: []
-backlog_items_completed: []
+backlog_items_completed:
+  # Drafted during kickoff seed batch
+  - bl-001   # AI Alignment
+  - bl-004   # Mesa-Optimization
+  - bl-007   # Moral Patienthood
+  - bl-008   # AI Welfare
+  - bl-012   # Te Tiriti and AI Governance
+  - bl-013   # Whakapapa and Relational Ontology
+  - bl-014   # NZ Algorithm Charter (policy)
+  - bl-017   # Stuart Russell
+  - bl-024   # Robert Long
+  - bl-029   # Anthropic
+  - bl-032   # MIRI
+  - bl-041   # Amodei Concrete Problems 2016
+  - bl-048   # EU AI Act
+  - bl-053   # Should AI Development Pause (debate)
+  - bl-057   # Initial Trust org stance (synthesis, draft)
 backlog_items_added:
-  # Seeded into Curation Backlog
-  - bl-001 through bl-???
+  # The full Curation Backlog (bl-001 through bl-065) was created
+  # this session and serves as the seed task list for future sessions.
 open_issues: []
 escalations:
   - Future versions of source `type:` enum should move into _Schema/Vocabulary.md; currently authoritative in _Meta/Source Tier System.md only.
