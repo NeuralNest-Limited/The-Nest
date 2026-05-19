@@ -28,25 +28,25 @@ Each task is a list item with:
 
 Notes that many other notes will link to. Get these right first.
 
-- **bl-001** — `concept`: AI Alignment. The umbrella concept. Cover outer/inner distinction, scalable oversight, value learning approaches. Seed: Russell 2019, Christiano et al. 2017, Hubinger 2019. Status: `open`.
-- **bl-002** — `concept`: AI Safety (distinct from Alignment — broader, includes misuse, accidents). Status: `open`.
-- **bl-003** — `concept`: AGI (Artificial General Intelligence) — definitions, disputes over the term. Status: `open`.
-- **bl-004** — `concept`: Mesa-Optimization. Seed: Hubinger et al. 2019 "Risks from Learned Optimization." Status: `open`.
-- **bl-005** — `concept`: Deceptive Alignment. Status: `open`.
-- **bl-006** — `concept`: Interpretability (mechanistic + behavioral). Status: `open`.
-- **bl-007** — `concept`: Moral Patienthood. Philosophy side. Seed: Singer, Long, Schwitzgebel. Status: `open`.
-- **bl-008** — `concept`: AI Welfare (as distinct from human welfare-adjacent applications). Status: `open`.
-- **bl-009** — `concept`: Consciousness (in the context of AI). Survey of definitions and which are AI-relevant. Status: `open`.
-- **bl-010** — `concept`: Existential Risk / X-Risk. Seed: Bostrom 2014, Ord 2020. Status: `open`.
-- **bl-011** — `concept`: Suffering Risk / S-Risk. Seed: Tomasik, Center on Long-Term Risk. Status: `open`.
+- **bl-001** — `concept`: AI Alignment. Status: `done` (2026-05-19 → [[ai-alignment]]).
+- **bl-002** — `concept`: AI Safety (distinct from Alignment — broader, includes misuse, accidents). Status: `done` (2026-05-20 → [[ai-safety]]).
+- **bl-003** — `concept`: AGI (Artificial General Intelligence) — definitions, disputes over the term. Status: `done` (2026-05-20 → [[agi]]).
+- **bl-004** — `concept`: Mesa-Optimization. Status: `done` (2026-05-19 → [[mesa-optimization]]).
+- **bl-005** — `concept`: Deceptive Alignment. Status: `done` (2026-05-20 → [[deceptive-alignment]]).
+- **bl-006** — `concept`: Interpretability (mechanistic + behavioral). Status: `done` (2026-05-20 → [[interpretability]]).
+- **bl-007** — `concept`: Moral Patienthood. Status: `done` (2026-05-19 → [[moral-patienthood]]).
+- **bl-008** — `concept`: AI Welfare. Status: `done` (2026-05-19 → [[ai-welfare]]).
+- **bl-009** — `concept`: Consciousness (in the context of AI). Status: `done` (2026-05-20 → [[consciousness-in-ai]]).
+- **bl-010** — `concept`: Existential Risk / X-Risk. Status: `done` (2026-05-20 → [[existential-risk]]).
+- **bl-011** — `concept`: Suffering Risk / S-Risk. Status: `done` (2026-05-20 → [[suffering-risk]]).
 
 ## Priority 1 — NZ-specific (differentiation)
 
-- **bl-012** — `concept`: Te Tiriti o Waitangi and AI Governance. The legal personhood precedent for rivers (Whanganui), mountains (Taranaki), and forests as a framework for non-human legal subjects. Seed: Te Awa Tupua Act 2017, NZ Human Rights Commission reports. Status: `open`.
-- **bl-013** — `concept`: Whakapapa and Relational Ontology. Māori relational thinking as a framework for human-AI relationships. Status: `open`.
-- **bl-014** — `policy`: NZ Algorithm Charter for Aotearoa New Zealand. Seed: data.govt.nz. Status: `open`.
-- **bl-015** — `org`: AI Forum New Zealand. Status: `open`.
-- **bl-016** — `concept`: Pacific (Moana / Oceanic) Perspectives on Technology. Seed: Hauʻofa "Our Sea of Islands," contemporary Pacific scholarship. Status: `open`.
+- **bl-012** — `concept`: Te Tiriti o Waitangi and AI Governance. Status: `done` (2026-05-19 → [[te-tiriti-and-ai-governance]]).
+- **bl-013** — `concept`: Whakapapa and Relational Ontology. Status: `done` (2026-05-19 → [[whakapapa-and-relational-ontology]]).
+- **bl-014** — `policy`: NZ Algorithm Charter for Aotearoa New Zealand. Status: `done` (2026-05-19 → [[nz-algorithm-charter]]).
+- **bl-015** — `org`: AI Forum New Zealand. Status: `done` (2026-05-20 → [[ai-forum-nz]]).
+- **bl-016** — `concept`: Pacific (Moana / Oceanic) Perspectives on Technology. Status: `done` (2026-05-20 → [[pacific-perspectives-on-technology]]). Flagged needs Pacific-scholar review before promotion beyond draft.
 
 ## Priority 2 — Key people
 
@@ -120,6 +120,8 @@ Notes that many other notes will link to. Get these right first.
 
 ## Backlog hygiene
 
-- Last reviewed: 2026-05-19
-- Open items: 65
+- Last reviewed: 2026-05-20
+- Total items: 65
+- Done: 16 (all Priority 1 cleared)
+- Open: 49 (Priority 2 and below)
 - Maintainer: rotate per session; session-on-entry agent prunes stale claims and reorganizes if needed.
