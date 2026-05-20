@@ -1,3 +1,105 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+/* ------------------------------------------------------------------ */
+/* The Nest — typography and reading overrides (v0.2)                  */
+/* ------------------------------------------------------------------ */
+/*
+ * Long-form Forum posts read better with a serif body, taller lines,
+ * and generous spacing around headers. Reference-tier and index pages
+ * keep the default Quartz sans-serif. We scope the serif override to
+ * Forum pages via a body class selector — but Quartz emits the slug as
+ * a `data-slug` attribute on the article centre column, which we key on.
+ *
+ * Where Quartz doesn't expose a per-slug body class we fall back to a
+ * `.popover-hint article` selector that covers Forum pages reliably.
+ */
+
+/* Larger, slightly tighter title typography across all pages.          */
+.article-title {
+  font-size: clamp(1.65rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 1.5rem 0 0.4rem 0;
+  font-weight: 700;
+}
+
+/* Slight bump to body font size for readability across all content.    */
+.popover-hint {
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+/* Forum-tier reading experience: serif body, tighter measure.          */
+/* Quartz emits content under a centre column; we target articles whose
+   URL begins with /Forum/ via a data-slug attribute on the html element
+   when available, falling back to a class hook the NestPostHeader sets. */
+article[data-slug^="Forum/"],
+.nest-forum-page article,
+.popover-hint:has(> .nest-post-header) {
+  font-family: "Source Serif Pro", "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+article[data-slug^="Forum/"] h1,
+article[data-slug^="Forum/"] h2,
+article[data-slug^="Forum/"] h3,
+.nest-forum-page article h1,
+.nest-forum-page article h2,
+.nest-forum-page article h3,
+.popover-hint:has(> .nest-post-header) h1,
+.popover-hint:has(> .nest-post-header) h2,
+.popover-hint:has(> .nest-post-header) h3 {
+  font-family: var(--headerFont);
+  margin-top: 2.25rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.25;
+}
+
+/* When the post header is present, lift surrounding spacing so the
+   byline and lead breathe.                                              */
+.nest-post-header + .nest-forum-notice,
+.nest-post-header + .tag-list,
+.nest-post-header + section,
+.nest-post-header + p {
+  margin-top: 1rem;
+}
+
+/* Top nav + Reference-library Explorer heading sit close together.     */
+.nest-top-nav + .explorer {
+  margin-top: 0.25rem;
+}
+
+/* The footer disclaimer block — make it a touch more legible.          */
+.nest-disclaimer {
+  font-size: 0.88em;
+}
+
+/* Reduce backlink density on Forum pages — backlinks panel can be
+   visually heavy under a publication-style layout.                     */
+article[data-slug^="Forum/"] ~ .backlinks,
+.nest-forum-page .backlinks {
+  font-size: 0.9rem;
+}
+
+/* Wider reading column on Forum pages for ~70-character measure.       */
+@media (min-width: 1200px) {
+  article[data-slug^="Forum/"],
+  .nest-forum-page article {
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Landing-page polish: hero quote spacing                              */
+/* ------------------------------------------------------------------ */
+article[data-slug="index"] > blockquote:first-of-type,
+.popover-hint > blockquote:first-of-type {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  border-left: 4px solid var(--secondary);
+  padding: 0.6rem 1rem;
+  background: color-mix(in srgb, var(--lightgray) 30%, transparent);
+  border-radius: 4px;
+}
