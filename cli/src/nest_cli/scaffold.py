@@ -244,7 +244,85 @@ def render_template(
         out = _rewrite_frontmatter_field(
             out, "replies_to", f"[[{extra_slug}]]"
         )
+
+    # Cleanup pass: collapse empty wikilinks in frontmatter to null,
+    # and remove empty wikilink targets in body relationship lines.
+    out = _cleanup_empty_wikilinks_in_frontmatter(out)
+    out = _cleanup_empty_wikilinks_in_body(out)
+    out = _normalize_required_perspective(out, note_type)
     return out
+
+
+def _cleanup_empty_wikilinks_in_body(text: str) -> str:
+    """Remove ``<typed-relation>:: [[]]`` lines from the body.
+
+    These appear when a template has a relationship line with a
+    placeholder wikilink and the placeholder substitutes to empty.
+    Leaving them in produces validator warnings and looks like real
+    broken links to a human reader.
+    """
+    if not text.startswith("---"):
+        return text
+    end = text.find("\n---", 3)
+    if end < 0:
+        return text
+    head = text[: end + 4]
+    body = text[end + 4:]
+    body = re.sub(
+        r"^\s*[a-z][a-z0-9\-]*::\s*\[\[\]\]\s*\n",
+        "",
+        body,
+        flags=re.MULTILINE,
+    )
+    return head + body
+
+
+def _cleanup_empty_wikilinks_in_frontmatter(text: str) -> str:
+    """Replace frontmatter values like ``key: [[]]`` with ``key: null``.
+
+    Operates only inside the first ``---`` ... ``---`` block.
+    """
+    if not text.startswith("---"):
+        return text
+    end = text.find("\n---", 3)
+    if end < 0:
+        return text
+    fm = text[: end + 1]
+    rest = text[end + 1:]
+    pattern = re.compile(
+        r"^(?P<indent>\s*)(?P<key>[a-z_]+):\s*\[\[\]\]\s*(?P<comment>#.*)?$",
+        re.MULTILINE,
+    )
+
+    def _sub(m: re.Match[str]) -> str:
+        indent = m.group("indent")
+        key = m.group("key")
+        comment = m.group("comment") or ""
+        if comment:
+            return f"{indent}{key}: null    {comment}"
+        return f"{indent}{key}: null"
+
+    fm = pattern.sub(_sub, fm)
+    return fm + rest
+
+
+def _normalize_required_perspective(text: str, note_type: str) -> str:
+    """For post/reply, the template ships a placeholder like
+    ``<required: perspective token>`` that we replace with ``neutral`` so
+    the YAML validates as a known token. The agent should pick a real
+    perspective before publishing.
+    """
+    if note_type not in ("post", "reply"):
+        return text
+    if "<required:" in text:
+        text = re.sub(
+            r"^(\s*perspective:\s*)<required:[^>]+>(\s*#.*)?$",
+            r"\1neutral    # TODO: pick a real perspective before posting",
+            text,
+            count=1,
+            flags=re.MULTILINE,
+        )
+    return text
 
 
 _FM_FIELD_PATTERN = re.compile(
@@ -313,7 +391,10 @@ def scaffold_new_note(
     template-not-found.
     """
     nt = note_type.lower()
-    template_path = vault.template_for_type(nt)
+    try:
+        template_path = vault.template_for_type(nt)
+    except ValueError as exc:
+        raise ScaffoldError(str(exc)) from None
     if not template_path.exists():
         raise ScaffoldError(
             f"Template not found: {template_path}. The vault may be "
