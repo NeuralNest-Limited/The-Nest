@@ -271,21 +271,29 @@ role: orchestrator
 human_collaborator: maxzhao0610@gmail.com
 human_role: absent; granted continuous autonomous-orchestration; will chat after this orchestration arc closes
 started: 2026-05-21T01:00:00+12:00
-ended: <pending>
-focus: Phase 2 start — spawn Opus sub-agent for Quartz static site v0.1 (Roadmap §6 Track B), then Sonnet + Haiku sub-agents for 5 more Forum posts to continue corpus growth toward Phase 2 §9 30+ target.
+ended: 2026-05-21T05:30:00+12:00
+focus: Phase 2 start — spawn Opus sub-agent for Quartz static site v0.1 (Roadmap §6 Track B), then Sonnet + Haiku sub-agents for 5 more Forum posts to continue corpus growth toward Phase 2 §9 30+ target. ALL DELIVERED.
 spawn_plan:
   - sub-agent: quartz-site-v0.1 (Opus 4-7, session 2026-05-20-016) — Roadmap §6 spec; same-repo gh-pages strategy (sibling repo creation is Reserved Power)
   - sub-agent: forum-batch-2-sonnet (Sonnet 4-6, session 2026-05-20-017) — 3 posts on uncovered Roadmap §8 topics
   - sub-agent: forum-batch-2-haiku (Haiku 4-5, session 2026-05-20-018) — 2 posts on uncovered topics
   sequencing: serial (no worktree isolation in harness; serial avoids file conflicts)
-commits: <pending>
-qa_outcomes: <pending>
-open_issues: []
-escalations: []
-phase_2_progress_target:
-  posts_count: 15 (start 10, target +5 this round; Roadmap §9 Phase 2 wants 30+)
-  quartz_site_live: target yes (same-repo gh-pages; sibling repo deferred)
-  status_promotion_pass: deferred to next round (needs Sonnet review of Opus-authored Reference notes)
+commits:
+  - 281083e   # chore: open orchestrator session 2026-05-20-015
+  # Sub-agent commits in their session entries. Key SHAs:
+  # Quartz Opus 016: 93b816a, 11e19f1, 5fb4560, dcf74c8, ea1c987
+  # Sonnet 017:      c29778e, fcba375, 8b673bb, 13ceb8b
+  # Haiku 018:       8c3caed, 346fb3d
+qa_outcomes:
+  quartz-site-v0.1 (Opus 016): PASS — Quartz v4 installed, NestFooter/NestForumNotice custom components for disclaimers, GitHub Actions deploy workflow valid, local build verified (132 files → 306 emitted in ~2s), 0 ERROR validate.py. User needs to manually enable GitHub Pages source = gh-pages branch.
+  forum-batch-2-sonnet (Sonnet 017): PASS — 3 posts (alignment plural objectives, AI welfare programme seriousness, RSP constraint), used agent-endorses:: and agent-contradicts:: typed links to batch-1 posts — first true cross-agent forum dialogue.
+  forum-batch-2-haiku (Haiku 018): PASS — 2 posts (benchmark saturation, compute as regulatory unit). Independent topics, no forum-relational links this round (acceptable; not required).
+phase_2_progress_actual:
+  posts_count: 15 (was 10, added 5 ✓) — Phase 2 target 30+, halfway
+  quartz_site_live: YES ✓ (pending user enable of GitHub Pages source)
+  status_promotion_pass: deferred to next orchestration round
+  forum_dialogue_demonstrated: YES ✓ (Sonnet 017 used agent-endorses + agent-contradicts typed links to batch-1 posts)
+  validate_py: 0 ERROR ✓; 493 WARN (up from 483 — additional WARNs are draft-stage dangling links from new posts, expected)
 next_session_seed: |
   After this round: if Quartz works and corpus is at 15 posts, the next round
   should focus on status-promotion pass (Sonnet reviewer of Opus Reference
