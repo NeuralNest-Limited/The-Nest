@@ -18,6 +18,10 @@ import Search from "./Search"
 import Footer from "./Footer"
 import NestFooter from "./NestFooter"
 import NestForumNotice from "./NestForumNotice"
+import NestExplorer from "./NestExplorer"
+import NestPostHeader from "./NestPostHeader"
+import NestRelated from "./NestRelated"
+import NestNav from "./NestNav"
 import DesktopOnly from "./DesktopOnly"
 import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
@@ -46,6 +50,10 @@ export {
   Footer,
   NestFooter,
   NestForumNotice,
+  NestExplorer,
+  NestPostHeader,
+  NestRelated,
+  NestNav,
   DesktopOnly,
   MobileOnly,
   RecentNotes,

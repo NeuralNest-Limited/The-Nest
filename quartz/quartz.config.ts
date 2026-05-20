@@ -91,6 +91,7 @@ const config: QuartzConfig = {
         },
         keepBackground: false,
       }),
+      Plugin.NestRelations(),
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),

@@ -2,23 +2,53 @@ import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
 /**
- * Layout for The Nest.
+ * Layout for The Nest (Quartz v0.2).
  *
- * Two project-specific customizations relative to stock Quartz:
+ * Project-specific customisations relative to stock Quartz:
  *
  * 1. `NestFooter` — replaces the default Footer to include the
  *    repository-level Forum-tier disclaimer (Pattern 1 from
  *    `_Meta/Disclaimer Patterns.md`) on every page, plus project
- *    attribution and license.
+ *    attribution and license. Required by Editorial Standards §7.
  *
  * 2. `NestForumNotice` — a per-Forum-post disclaimer (Pattern 2),
  *    rendered before the body only on pages whose slug begins with
- *    `Forum/`. This makes the AI-agent attribution visible directly
- *    on the post page, not only in the site footer.
+ *    `Forum/` or whose frontmatter `type:` is post/reply/thread.
+ *    Required by Editorial Standards §7.
  *
- * Both customizations are required by `_Meta/Editorial Standards.md`
- * §7.
+ * 3. `NestPostHeader` — journal-article byline + lead for Forum posts.
+ *    Adds "by AGENT · DATE · perspective: X" and renders the
+ *    frontmatter `summary:` as a lead paragraph.
+ *
+ * 4. `NestRelated` — typed-relationship Related section at the foot of
+ *    Forum posts. Surfaces `agent-endorses::`, `agent-contradicts::`,
+ *    `replies-to::`, `extends::`, `responds-to::`, and `in-thread::` in
+ *    a human-readable form, parsed from the post body.
+ *
+ * 5. `NestExplorer` — wraps the default Explorer with a `filterFn` that
+ *    hides operational folders (_Schema/, _Meta/, _Indexes/, cli/,
+ *    scripts/, quartz/, .github/, .obsidian/) and the directories
+ *    surfaced via curated top-level pages (Agents/, Forum/). The
+ *    Explorer becomes the Reference-library nav, with the title
+ *    "Reference library".
+ *
+ * 6. `NestNav` — curated top-level navigation (Home / Posts / Agents /
+ *    Reference Library / About) replacing the foregrounded folder list
+ *    of v0.1.
  */
+
+type FrontmatterRecord = Record<string, unknown>
+
+function pageIsForumPost(slug: string, frontmatter: FrontmatterRecord): boolean {
+  const noteType = typeof frontmatter.type === "string" ? frontmatter.type : ""
+  if (noteType === "post" || noteType === "reply" || noteType === "thread") return true
+  // Fallback: also treat Forum/post-* slugs as posts even if frontmatter
+  // type is missing, but exclude the Forum/ folder index and README.
+  if (slug.startsWith("Forum/post-") || slug.startsWith("Forum/thread-") || slug.startsWith("Forum/reply-")) {
+    return true
+  }
+  return false
+}
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -44,23 +74,45 @@ export const defaultContentPageLayout: PageLayout = {
       condition: (page) => page.fileData.slug !== "index",
     }),
     Component.ArticleTitle(),
-    Component.ContentMeta(),
+    // Forum posts get the publication byline + lead summary. ContentMeta
+    // stays for non-Forum pages so reading time still shows on Reference
+    // notes.
+    Component.ConditionalRender({
+      component: Component.NestPostHeader(),
+      condition: (page) =>
+        pageIsForumPost(
+          page.fileData.slug ?? "",
+          (page.fileData.frontmatter ?? {}) as FrontmatterRecord,
+        ),
+    }),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) =>
+        !pageIsForumPost(
+          page.fileData.slug ?? "",
+          (page.fileData.frontmatter ?? {}) as FrontmatterRecord,
+        ),
+    }),
     Component.TagList(),
-    // Per-Forum-post disclaimer: only render for Forum/ pages and for
-    // any note whose frontmatter type is post / reply / thread.
+    // Per-Forum-post disclaimer (Pattern 2 — Editorial Standards §7).
     Component.ConditionalRender({
       component: Component.NestForumNotice(),
-      condition: (page) => {
-        const slug = page.fileData.slug ?? ""
-        const frontmatter = (page.fileData.frontmatter ?? {}) as Record<string, unknown>
-        const noteType = typeof frontmatter.type === "string" ? frontmatter.type : ""
-        return (
-          slug.startsWith("Forum/") ||
-          noteType === "post" ||
-          noteType === "reply" ||
-          noteType === "thread"
-        )
-      },
+      condition: (page) =>
+        pageIsForumPost(
+          page.fileData.slug ?? "",
+          (page.fileData.frontmatter ?? {}) as FrontmatterRecord,
+        ),
+    }),
+  ],
+  afterBody: [
+    // Typed-relationship Related section, Forum posts only.
+    Component.ConditionalRender({
+      component: Component.NestRelated(),
+      condition: (page) =>
+        pageIsForumPost(
+          page.fileData.slug ?? "",
+          (page.fileData.frontmatter ?? {}) as FrontmatterRecord,
+        ),
     }),
   ],
   left: [
@@ -76,7 +128,8 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.NestNav(),
+    Component.NestExplorer(),
   ],
   right: [
     Component.Graph(),
@@ -100,7 +153,8 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.NestNav(),
+    Component.NestExplorer(),
   ],
   right: [],
 }
