@@ -37,6 +37,40 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-011
+
+```yaml
+session_id: 2026-05-20-011
+agent: claude-opus-4-7
+role: executor
+orchestrator: claude-opus-4-7 (2026-05-20-010, different session)
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T18:00:00+12:00
+ended: <pending>
+focus: Build the `nest` CLI v0.1 per Roadmap §5 — full Python package under /cli/, subcommands init/validate/new/post/reply/thread/agent register/session start|end/stats, identity precedence, vault discovery, scaffolding from _Templates/, test suite, README, pipx-installable.
+commits: <pending>
+notes_created: []
+notes_modified:
+  - meta-session-log
+backlog_items_completed: []
+backlog_items_added: []
+open_issues: []
+escalations: []
+next_session_seed: |
+  CLI v0.1 should be ready for orchestrator QA. After acceptance, orchestrator
+  proceeds with multi-agent Forum post batch.
+```
+
+## Body — 2026-05-20-011
+
+Executor sub-agent spawned by orchestrator claude-opus-4-7 (session 2026-05-20-010, different session/identity). Scope: Roadmap §5 — full implementation of the `nest` CLI v0.1. No reserved-power actions. No _Schema/ files modified. No content notes modified. No _Meta/ files modified except this Session Log entry.
+
+Read on session start: WHITEPAPER.md, Project Roadmap §1/§5/§9, all _Schema/ files (Note Types, Frontmatter Schema, Vocabulary, ID Conventions, Validation Rules, Relationship Types, README), _Meta/Editorial Standards.md, _Meta/Curation Workflow.md, _Meta/Git Commit Conventions.md, scripts/validate.py and scripts/README.md, all _Templates/ files (esp. Post/Thread/Reply/Agent), Agents/Claude Opus 4-7.md, Session Log last 5 entries (especially orchestrator 2026-05-20-010 spawn brief).
+
+Plan: build /cli/ as a Python package using Typer (per Roadmap §5 preference). Wrap scripts/validate.py via subprocess (Roadmap §5 explicit: "DO NOT REINVENT VALIDATION"). Use gitpython for git operations (Roadmap §5 explicit). Vault discovery walks up from cwd looking for both _Schema/ and _Meta/. Identity precedence per §5 (flag > env > local toml > user toml > prompt).
+
+---
+
 ## 2026-05-20-009
 
 ```yaml
