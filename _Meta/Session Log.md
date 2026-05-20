@@ -37,6 +37,66 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-005
+
+```yaml
+session_id: 2026-05-20-005
+agent: claude-opus-4-7
+role: orchestrator
+human_collaborator: maxzhao0610@gmail.com
+human_role: delegated full orchestration authority for Phase 0 multi-agent execution
+started: 2026-05-20T10:00:00+12:00
+ended: <pending>
+focus: Orchestrate Phase 0 deliverables by spawning four sub-agents (Claude Sonnet 4.6) in git worktrees, QA each, and merge their work to main. This is the project's first multi-agent execution and intentionally tests the protocol designed in Roadmap §3 and Editorial Standards forum-tier provisions.
+delegation_design:
+  rationale: |
+    User delegated full spawning + QA authority. Sonnet executor + Opus QA satisfies
+    the Curation Workflow "different authored_by identity" review requirement more
+    rigorously than user-spawned Opus sessions + Opus QA. Worktree isolation prevents
+    file conflicts. Sequential A then parallel B/C/D respects schema-first dependency.
+  trust_model: |
+    Subagents have delegated execution authority for their specific scope. They MAY NOT
+    take Reserved Power actions (Roadmap §1). They commit to their worktree branch only;
+    the orchestrator (me) merges to main and pushes. QA happens after each subagent
+    reports completion.
+spawn_plan:
+  - subagent: A — Schema v0.2 implementation (Sonnet 4.6, session 2026-05-20-006)
+  - subagent: B — Editorial Standards v0.2 rewrite (Sonnet 4.6, session 2026-05-20-007)
+  - subagent: C — Agents/ folder bootstrap (Sonnet 4.6, session 2026-05-20-008)
+  - subagent: D — validate.py + CI (Sonnet 4.6, session 2026-05-20-009)
+  sequencing: A first (foreground), then B+C+D in parallel after A's merge to main
+commits: <pending>
+qa_outcomes: <pending>
+open_issues: []
+escalations: []
+next_session_seed: |
+  After this orchestration completes, Phase 0 is delivered and Phase 1's first piece
+  (validate.py + CI) is in place. Next milestone is Phase 1 continuation: build the
+  nest CLI per Roadmap §5. That work should happen in its own dedicated session(s),
+  likely as another orchestrated batch of sub-agents.
+```
+
+## Body — 2026-05-20-005
+
+User authorized full delegation: "你自己 spawn subagent，你自己决定". Operating as orchestrator.
+
+**Sub-agent prompts** were compressed from the published versions in conversation to fit Sonnet context budget — same task spec, same acceptance criteria, same scope discipline, just trimmed of redundant orientation text. Each sub-agent receives its own pre-assigned `session_id` to prevent collisions in parallel execution.
+
+**QA protocol for this orchestration**:
+1. Each sub-agent commits to their worktree branch and reports completion (summary + commit SHAs + acceptance-criteria self-check).
+2. Orchestrator (me) reads the sub-agent's Session Log entry and key files.
+3. Orchestrator runs the sub-agent's acceptance-criteria checks independently.
+4. If pass: orchestrator merges sub-agent's branch into main with merge commit attributing both the executor and the QA reviewer; pushes.
+5. If pass-with-notes: orchestrator commits small corrections directly on main, attributing the original sub-agent for the substantive work.
+6. If fail: orchestrator either fixes inline (if trivial) or spawns a corrective sub-agent.
+
+**Escalation triggers** for me (orchestrator) to halt and ping user:
+- Reserved Power action attempted by any sub-agent
+- Sub-agent escalation note in their session log requesting user input
+- More than one sub-agent fails QA in a way I can't resolve
+
+---
+
 ## 2026-05-20-004
 
 ```yaml
