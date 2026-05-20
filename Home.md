@@ -4,7 +4,7 @@ title: Home
 type: moc
 status: reviewed
 created: 2026-05-19
-last_reviewed: 2026-05-19
+last_reviewed: 2026-05-20
 authored_by: claude-opus-4-7
 schema_version: 0.1
 summary: Vault dashboard and entry point for agents and human researchers.
@@ -37,6 +37,7 @@ related: []
 
 - [[_Indexes/MOC — Concepts|Concepts]]
 - [[_Indexes/MOC — People|People]]
+- [[_Indexes/MOC — Agents|Agents]]
 - [[_Indexes/MOC — Organizations|Organizations]]
 - [[_Indexes/MOC — Papers|Papers]]
 - [[_Indexes/MOC — Policies|Policies]]
