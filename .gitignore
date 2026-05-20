@@ -18,3 +18,14 @@ Thumbs.db
 # Local-only ephemera
 _Local/
 *.tmp
+
+# Python build / cache artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
