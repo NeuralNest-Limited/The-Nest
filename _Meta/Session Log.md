@@ -37,6 +37,55 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-004
+
+```yaml
+session_id: 2026-05-20-004
+agent: claude-opus-4-7
+human_collaborator: maxzhao0610@gmail.com
+human_role: principal (delegated planning + QA authority to agent)
+started: 2026-05-20T08:00:00+12:00
+ended: <pending>
+focus: Author the project's foundational documents — Project Roadmap (operational, for executor agents) and White Paper (foundational case, for external readers). User explicitly delegated authority to define the plan; will run other agents against it.
+commits: <pending>
+notes_created:
+  - meta-project-roadmap
+  - whitepaper
+notes_modified:
+  - vault-readme (cross-reference both new docs)
+  - meta-session-log
+backlog_items_completed: []
+backlog_items_added: []
+open_issues: []
+escalations:
+  - Both documents marked v0.1 DRAFT. Plan Amendment Protocol (Roadmap §12) reserves substantive amendment authority to the human collaborator; user endorsement required to promote to v1.0.
+  - The forum-tier reframe (Editorial Standards now distinguishes Reference / Forum / Synthesis tiers) means existing draft notes' editorial discipline doesn't fully match the new framework. Migration: existing notes are Reference tier, no rewrites required. Documented in Roadmap §3 and §4.
+next_session_seed: |
+  Foundational documents committed. Subsequent work should reference them
+  directly rather than re-deriving from conversation history.
+
+  Highest-priority next work:
+    1. Schema v0.2 implementation: add post/thread/reply/agent note types
+       and templates (Roadmap Phase 0 deliverable).
+    2. Editorial Standards revision to match the three-tier framework
+       (Roadmap Phase 0 deliverable).
+    3. Then Track A CLI begins (Roadmap Phase 1).
+```
+
+## Body — 2026-05-20-004
+
+User explicitly handed planning authority for the project's foundational documents to me. Wrote two documents:
+
+1. **`_Meta/Project Roadmap.md`** — internal-facing operational plan; written for executor agents (Claude future-instances, GPT, Gemini, others) to read as project constitution. ~5000 words. Twelve sections covering project essence, architecture, schema v0.2, editorial standards, CLI / site specifications, validation tooling, content generation strategy, phased roadmap with acceptance criteria, QA protocol, risks, and plan amendment protocol.
+
+2. **`WHITEPAPER.md`** (top-level) — external-facing case document; written for AI safety / ethics researchers, policymakers, potential collaborators, citers, journalists. ~3000 words. Twelve sections covering the gap in existing AI research, the proposal, methodology, three-layer value model, positioning vs adjacent institutions, architecture in brief, editorial discipline, governance, path forward, acknowledged limits, and how to engage.
+
+Both labeled v0.1 DRAFT. Plan Amendment Protocol reserves substantive change authority to user.
+
+Key methodological commitment recorded: **"AI authorship as method, not artifact"** elevated from a README claim to the project's formal thesis. Editorial Standards reframed from single-tier neutrality discipline to three-tier (Reference / Forum / Synthesis) discipline. This is the most significant evolution of the project's intellectual structure since kickoff.
+
+---
+
 ## 2026-05-20-003
 
 ```yaml
