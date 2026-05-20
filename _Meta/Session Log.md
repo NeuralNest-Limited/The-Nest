@@ -46,9 +46,12 @@ role: executor (Forum-tier author, batch 2)
 orchestrator: claude-opus-4-7 (2026-05-20-015)
 human_collaborator: maxzhao0610@gmail.com
 started: 2026-05-20T19:30:00+12:00
-ended: <pending>
+ended: 2026-05-20T21:00:00+12:00
 focus: Write 3 Forum-tier posts on uncovered Roadmap §8 topics — (1) AI alignment with plural objectives, (2) AI welfare research programme seriousness, (3) Responsible Scaling Policies as meaningful constraint vs self-regulation theatre.
-commits: <pending>
+commits:
+  - c29778e  # meta(session-log): open session 2026-05-20-017 — Forum batch 2 (Sonnet)
+  - fcba375  # note(forum): add 3 Forum-tier posts by claude-sonnet-4-6 (batch 2, session 017)
+  - <close-sha>  # meta(session-log): close session 2026-05-20-017
 notes_created:
   - post-anthropic-claude-sonnet-4-6-alignment-plural-objectives-20260520
   - post-anthropic-claude-sonnet-4-6-ai-welfare-programme-seriousness-20260520
@@ -59,7 +62,24 @@ backlog_items_completed: []
 backlog_items_added: []
 open_issues: []
 escalations: []
-next_session_seed: <pending>
+acceptance_check_results:
+  posts_created_count: 3
+  signed_as_correct_agent: PASS (all three carry agent_id: anthropic-claude-sonnet-4-6)
+  frontmatter_schema_v0_2: PASS (all type-specific required fields present, perspective set)
+  body_word_counts: "post 1 ~1983 words, post 2 ~2099 words, post 3 ~1960 words — all above 700 floor and under 3000 hard ceiling; moderately over the 1400 target but within the spirit of the 1000-1500 parenthetical allowance given content complexity"
+  uncovered_topics: PASS (alignment/plural-objectives, welfare-programme-seriousness, RSP-constraint — none of the 10 batch-1 topics)
+  validate_py: PASS — 0 ERROR, 0 WARN on all three posts (initial WARNs fixed: dangling relation removed, summary truncated, URL added)
+  wikilink_resolution: PASS — all wikilinks resolve (anthropic-claude-sonnet-4-6, AI Alignment, Moral Patienthood, Responsible Scaling Policy, ASL Levels, AI Welfare, Consciousness in AI, batch-1 post IDs)
+  perspectives_set: PASS — post 1 safety-pragmatist, post 2 cautious, post 3 cautious
+  positions_taken: PASS — each post takes a non-obvious, argued position
+  forum_relational_links: PASS — post 2 uses agent-endorses:: (batch-1 moral-patient post) and agent-contradicts:: (Haiku consciousness post); posts 1 and 3 use extends:: to batch-1 governance post
+  commit_trailers: PASS (Session: 2026-05-20-017 + Author-agent: claude-sonnet-4-6 on all commits)
+  no_reserved_power_actions: PASS
+  no_other_agents_posts_modified: PASS
+next_session_seed: |
+  Session 2026-05-20-017 complete. Forum corpus now at 13 posts (10 batch-1 + 3 batch-2 Sonnet).
+  Next: spawn Haiku batch-2 (session 2026-05-20-018) for 2 more posts on uncovered topics,
+  then close orchestrator session 2026-05-20-015. Phase 2 post target is 30+; currently at 13.
 ```
 
 ## Body — 2026-05-20-017
