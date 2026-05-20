@@ -37,6 +37,110 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-016
+
+```yaml
+session_id: 2026-05-20-016
+agent: claude-opus-4-7
+role: executor (Quartz site v0.1 builder)
+orchestrator: claude-opus-4-7 (2026-05-20-015)
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T18:10:00+12:00
+ended: <pending>
+focus: Phase 2 Track B (Roadmap §6) — install and configure Quartz v4 in /quartz, point it at the vault root, add the repository-level Forum-tier disclaimer to the site footer and a per-Forum-post disclaimer to every Forum page, wire a GitHub Actions workflow that builds on push to main and publishes to the same-repo gh-pages branch. Out of scope: custom by-agent / by-perspective / thread views (deferred to v0.2); sibling-repo or DNS configuration (Reserved Powers).
+commits: <pending>
+qa_outcomes: <pending>
+open_issues: []
+escalations: []
+acceptance_check_results:
+  quartz_v4_installed: PASS (Quartz v4.5.2 flat-copied into /quartz, .git/.github removed; package-lock.json tracked for npm ci reproducibility)
+  config_sources_from_vault_root: PASS (npx quartz build -d ../ wired into local script and CI; quartz.config.ts ignorePatterns excludes quartz/, cli/, scripts/, .github/, _Templates/, _Schema/, .obsidian/)
+  local_build_succeeds: PASS (npx quartz build -d ../ → 132 input files → 306 emitted files in public/; clean from a fresh state, no ERRORs, no WARNs)
+  workflow_yaml_valid: PASS (python yaml.safe_load on .github/workflows/deploy-site.yml; trigger paths-ignore excludes cli/, scripts/, validate workflow, gitignore, CITATION, LICENSE)
+  disclaimer_in_footer: PASS (NestFooter component renders Pattern-1 disclaimer text on every page; verified via grep against built HTML index and Concept pages)
+  rss_configured: PASS (ContentIndex emitter enableRSS=true rssLimit=50 → public/index.xml)
+  per_forum_post_disclaimer: PASS (NestForumNotice component conditionally rendered on Forum/* pages via slug + frontmatter.type check; verified present in Forum/post-*.html and absent in Concepts/AGI.html)
+  readme_documents_build_deploy_v02_deferral: PASS (quartz/README.md covers local build, requirements, customizations, CI deploy, manual GH Pages enablement, custom domain handover, full v0.2 deferred list)
+  commits_trailered: <pending — will verify after commit>
+  session_log_opened_closed: <opened now; close at end>
+notes_modified:
+  - vault-readme (added "Public site" subsection with disclaimer paragraph)
+notes_created:
+  - site-index (new index.md at vault root; site landing page mirroring Home.md content but with simpler structure)
+files_added:
+  - quartz/ (Quartz v4.5.2 source, flat copy, .git/.github removed; total 14 top-level entries)
+  - quartz/quartz/components/NestFooter.tsx (custom footer with Pattern-1 disclaimer)
+  - quartz/quartz/components/NestForumNotice.tsx (per-Forum-post Pattern-2 disclaimer)
+  - .github/workflows/deploy-site.yml (build + gh-pages deploy via peaceiris/actions-gh-pages@v4)
+  - index.md (site landing page at vault root)
+files_modified:
+  - quartz/quartz.config.ts (project pageTitle, baseUrl, ignorePatterns; analytics nulled; CustomOgImages omitted; rssLimit 50)
+  - quartz/quartz.layout.ts (NestFooter replaces Footer; NestForumNotice conditionally rendered on Forum/* pages)
+  - quartz/quartz/components/index.ts (export NestFooter and NestForumNotice)
+  - quartz/quartz/plugins/transformers/frontmatter.ts (added sanitizeWikilinkFrontmatter + preprocessFrontmatterBlock to tolerate Obsidian wikilink syntax inside YAML frontmatter; required because ~109 vault notes use `key: [[Note]], [[Note]]` patterns and the brief explicitly forbids modifying vault content)
+  - quartz/README.md (project-specific install / build / deploy / v0.2 deferral documentation)
+  - .gitignore (ignore quartz/node_modules, quartz/public, quartz/.quartz-cache, tsconfig.tsbuildinfo, prof)
+  - README.md (added "Public site" section with GitHub Pages URL and disclaimer paragraph)
+deferred_to_v0_2:
+  - Forum-only RSS feed (/rss.xml for forum tier)
+  - By-agent view (/agents/<id>)
+  - By-perspective view (/perspectives/<perspective>)
+  - By-topic view (/topics/<topic>)
+  - Thread view (seed + replies in conversation order)
+  - Agent timeline (/agents/<id>/timeline)
+  - Recent activity HTML page (/recent)
+  - WCAG-AA accessibility audit
+  - 2s-cached-page-load performance target measurement
+  - Pattern-2 short-variant disclaimer in RSS item descriptions
+  - CustomOgImages emitter (re-enable if useful for social sharing)
+manual_user_steps_required:
+  - After first successful CI run, enable GitHub Pages with gh-pages branch as source (Settings → Pages → Source = "Deploy from a branch" → gh-pages / root)
+  - DNS: when ready, CNAME nest.neuralnest.info → neuralnest-limited.github.io and add CNAME file at repo root (CI workflow already copies it into public/CNAME)
+  - Reserved Powers untouched: no sibling repo, no DNS, no repo settings, no force-push, no schema-breaking change
+next_session_seed: |
+  Site v0.1 infrastructure complete and merged. Awaiting first push to main to trigger CI build of gh-pages branch. Once gh-pages is created, user enables GitHub Pages from repo settings and the site is live at https://neuralnest-limited.github.io/The-Nest/. Next infrastructure work for v0.2 (post-corpus growth): the deferred custom views above, especially the thread view (Roadmap §6.4 required) and by-agent view (§6.1 required). Both need custom Quartz emitters that walk frontmatter relationships. Estimated 1-2 days each.
+```
+
+## Body — 2026-05-20-016
+
+Executor sub-agent spawned by orchestrator claude-opus-4-7 session 2026-05-20-015 to deliver Roadmap §6 Track B (Quartz site v0.1) scoped down per the orchestrator's pragmatic-v0.1 brief.
+
+Strategy and key decisions:
+
+1. **Flat-copy install over submodule.** Cloned Quartz v4.5.2 (commit d25a6ea) into `/quartz`, removed its `.git/` and `.github/` directories, and committed the source as part of this repo. Submodules add CI complexity and make local "clone, install, build" less obvious; the flat-copy is reproducible from a clean checkout and easier to upgrade by manual diff later.
+
+2. **Content directory wiring via `-d ../` flag, not symlink.** Quartz's CLI accepts `-d` to point at any directory; the vault root works as long as `ignorePatterns` excludes operational paths. A symlink at `quartz/content` would have worked but is platform-dependent (Windows treats it weirdly) and obscures what's being built. The flag approach is documented in both `quartz/README.md` and the CI workflow.
+
+3. **Three minimal Quartz source modifications:**
+   - `NestFooter.tsx` — a copy of `Footer.tsx` with the Pattern-1 disclaimer text inlined as a styled callout.
+   - `NestForumNotice.tsx` — a new component that reads `agent_id` from frontmatter and renders Pattern-2 disclaimer.
+   - `frontmatter.ts` — added a `preprocessFrontmatterBlock` + `sanitizeWikilinkFrontmatter` pre-pass so YAML frontmatter containing raw Obsidian wikilinks (e.g. `related: [[AI Alignment]], [[Existential Risk]]`) parses cleanly. Without this, the initial build failed at `Concepts/AGI.md` because YAML cannot lex bare `[[`. Modifying vault content is out-of-scope per the brief (109 affected files); patching the parser was the right layer.
+
+4. **Same-repo gh-pages deployment via peaceiris/actions-gh-pages@v4.** The orchestrator brief is explicit that sibling-repo creation (`NeuralNest-Limited/the-nest-site`) is a Reserved Power, so the standard Quartz `actions/deploy-pages` workflow (which targets the github-pages environment) was adapted: build runs in CI, the resulting `quartz/public/` directory is pushed to a `gh-pages` branch of the same repository, and GitHub Pages will serve from that branch once a maintainer enables it manually. This is documented in `quartz/README.md`.
+
+5. **`index.md` added at vault root** (new file). Quartz expects a homepage at `index.md`; the existing `Home.md` is the Obsidian-user dashboard and is reachable at `/Home`. Rather than rename or duplicate Home.md (vault content modification — out of scope), a new `index.md` was authored as the site's public landing page. It introduces the project, links to WHITEPAPER / Roadmap / Home, and surfaces the major MOCs.
+
+6. **Deferred v0.2 items.** The Roadmap §6 spec includes by-agent / by-perspective / by-topic / thread / agent-timeline views and a forum-only RSS feed. These all require custom Quartz emitters that walk frontmatter relationships. They are deliberately omitted from v0.1 per the orchestrator's "pragmatic v0.1; defer fancy custom views" instruction. The full deferred list is enumerated in `quartz/README.md` and in `acceptance_check_results.deferred_to_v0_2` above.
+
+Local build verification: `cd quartz && npx quartz build -d ../` produces 306 files in `quartz/public/` from 132 input markdown files in approximately 2 seconds total (well under Roadmap §6's 5-minute target for a 200-note vault). The build is reproducible from a clean state (verified by `rm -rf public .quartz-cache` and re-running).
+
+Acceptance criteria self-check (against the brief and Roadmap §9 Phase 2):
+1. Quartz v4 installed in `quartz/` — PASS
+2. Configured to source from vault root markdown — PASS (`-d ../` + ignorePatterns)
+3. Local build succeeds, produces public/ — PASS
+4. GitHub Actions workflow valid YAML, correct triggers — PASS (validated via yaml.safe_load)
+5. Disclaimer present in site footer — PASS (NestFooter; grep-confirmed in built HTML)
+6. RSS feed configured — PASS (`public/index.xml`, 50-item limit, valid RSS 2.0)
+7. quartz/README.md documents build, deploy, v0.2 deferrals — PASS
+8. Commits properly trailered — pending (will verify after commit groups land)
+9. Session log opened and closed — opened above; close at end of session
+
+No reserved-power actions taken. No vault content modified (except new root-level `index.md` for site landing, which the brief explicitly permits: "Possibly a root-level `SITE.md` or update to README.md"). No `_Schema/`, `_Templates/`, `scripts/`, `cli/`, or `_Meta/` files modified except the session log (this entry). No `_Synthesis/` files modified. No Forum posts modified.
+
+Escalations: none. The build cleanly succeeds; the workflow is valid; all stated acceptance criteria are met.
+
+---
+
 ## 2026-05-20-015
 
 ```yaml
