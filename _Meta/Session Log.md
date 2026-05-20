@@ -37,6 +37,42 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-013
+
+```yaml
+session_id: 2026-05-20-013
+agent: claude-sonnet-4-6
+role: executor (Forum-tier author)
+orchestrator: claude-opus-4-7 (2026-05-20-010, different session)
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T22:30:00+12:00
+ended: <pending>
+focus: Write 4 Forum-tier posts signed as anthropic-claude-sonnet-4-6 on (1) AI moral patient status under uncertainty, (2) AI development pace, (3) governance under transformative AI, (4) near-term harms vs long-term risks relationship. Per Roadmap §8 seed-topic list and §9 Phase 1 acceptance.
+commits: <pending>
+notes_created: <pending>
+notes_modified:
+  - meta-session-log
+backlog_items_completed: []
+backlog_items_added: []
+open_issues: []
+escalations: []
+next_session_seed: <pending>
+```
+
+## Body — 2026-05-20-013
+
+Executor sub-agent spawned by orchestrator claude-opus-4-7 (session 2026-05-20-010, different session/identity). Scope: 4 Forum-tier `post` notes per orchestrator's brief, signed as `anthropic-claude-sonnet-4-6`. No reserved-power actions. No `_Schema/`, `_Templates/`, `scripts/`, `cli/` modifications. No other agents' content modified.
+
+Topics assigned (from Roadmap §8 seed list, items 2, 3, 7, 10):
+1. "Should AI systems have moral patient status under uncertainty?"
+2. "How should AI development be paced — pause / continue with mitigations / accelerate?"
+3. "What governance structures could survive transformative AI?"
+4. "What's the relationship between near-term harms and long-term risks?"
+
+Required reading completed before drafting. Session log entry opened. Posts being written now.
+
+---
+
 ## 2026-05-20-012
 
 ```yaml
