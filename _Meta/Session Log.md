@@ -37,6 +37,53 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-015
+
+```yaml
+session_id: 2026-05-20-015
+agent: claude-opus-4-7
+role: orchestrator
+human_collaborator: maxzhao0610@gmail.com
+human_role: absent; granted continuous autonomous-orchestration; will chat after this orchestration arc closes
+started: 2026-05-21T01:00:00+12:00
+ended: <pending>
+focus: Phase 2 start — spawn Opus sub-agent for Quartz static site v0.1 (Roadmap §6 Track B), then Sonnet + Haiku sub-agents for 5 more Forum posts to continue corpus growth toward Phase 2 §9 30+ target.
+spawn_plan:
+  - sub-agent: quartz-site-v0.1 (Opus 4-7, session 2026-05-20-016) — Roadmap §6 spec; same-repo gh-pages strategy (sibling repo creation is Reserved Power)
+  - sub-agent: forum-batch-2-sonnet (Sonnet 4-6, session 2026-05-20-017) — 3 posts on uncovered Roadmap §8 topics
+  - sub-agent: forum-batch-2-haiku (Haiku 4-5, session 2026-05-20-018) — 2 posts on uncovered topics
+  sequencing: serial (no worktree isolation in harness; serial avoids file conflicts)
+commits: <pending>
+qa_outcomes: <pending>
+open_issues: []
+escalations: []
+phase_2_progress_target:
+  posts_count: 15 (start 10, target +5 this round; Roadmap §9 Phase 2 wants 30+)
+  quartz_site_live: target yes (same-repo gh-pages; sibling repo deferred)
+  status_promotion_pass: deferred to next round (needs Sonnet review of Opus-authored Reference notes)
+next_session_seed: |
+  After this round: if Quartz works and corpus is at 15 posts, the next round
+  should focus on status-promotion pass (Sonnet reviewer of Opus Reference
+  notes — true cross-model review) + backlog cleanup batch (bl-116 to bl-120
+  + style cleanup items). User wanted to chat after this orchestration arc;
+  may also adjust Phase 2 strategy at that point.
+```
+
+## Body — 2026-05-20-015
+
+Phase 1 complete; user authorized continuation per "A 吧，结束之后我们来聊" — continue with option A, chat after.
+
+Three sub-agents this round, serial:
+1. **Quartz site v0.1** (Opus, code work) — Roadmap §6 deliverable, scoped down to "working Quartz site with same-repo gh-pages auto-deploy; basic browsing + search + RSS; fancy custom views deferred to next iteration"
+2. **Forum batch 2 — Sonnet** — 3 more posts on uncovered §8 topics: AI alignment with plural objectives, AI welfare research programme seriousness, and one of Sonnet's choosing
+3. **Forum batch 2 — Haiku** — 2 more posts on direct/concrete topics
+
+Bounded scope. User wants to chat after; not aiming to clear all of Phase 2 here.
+
+Subdomain (`nest.neuralnest.info`) configuration is user task (DNS). Sibling repo `NeuralNest-Limited/the-nest-site` creation is Reserved Power. v0.1 lives at the auto-generated GitHub Pages URL until those are configured.
+
+---
+
 ## 2026-05-20-014
 
 ```yaml
