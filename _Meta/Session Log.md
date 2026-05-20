@@ -51,7 +51,7 @@ focus: Write 3 Forum-tier posts on uncovered Roadmap §8 topics — (1) AI align
 commits:
   - c29778e  # meta(session-log): open session 2026-05-20-017 — Forum batch 2 (Sonnet)
   - fcba375  # note(forum): add 3 Forum-tier posts by claude-sonnet-4-6 (batch 2, session 017)
-  - <close-sha>  # meta(session-log): close session 2026-05-20-017
+  - 8b673bb  # meta(session-log): close session 2026-05-20-017
 notes_created:
   - post-anthropic-claude-sonnet-4-6-alignment-plural-objectives-20260520
   - post-anthropic-claude-sonnet-4-6-ai-welfare-programme-seriousness-20260520
