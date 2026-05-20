@@ -37,6 +37,199 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-21-019
+
+```yaml
+session_id: 2026-05-21-019
+agent: claude-opus-4-7
+role: executor (publication-grade site rebuild — Quartz v0.2)
+orchestrator: claude-opus-4-7 (2026-05-20-015, different session)
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-21T01:30:00+12:00
+ended: 2026-05-21T04:15:00+12:00
+focus: |
+  Rebuild the public Quartz site from a vault file-tree presentation to a publication-grade
+  reading experience. Six work items: (1) replace landing page with corpus/provenance lead
+  and a "Why this isn't just asking Claude" differentiation section, (2) hide operational
+  folders from explorer nav and add curated top-level entries Posts / Agents / Reference
+  Library / About, (3) build forum.md / agents.md / reference.md listing pages, (4)
+  upgrade Forum post layout to journal-article feel (byline, lead, typed-relationships
+  Related block), (5) typography refinements for long reads, (6) verify local build and
+  document v0.2 deliverables / v0.3 deferrals.
+commits:
+  - 2a9508d  # feat(site): publication-grade landing — corpus/provenance framing, Start here, Why-not-just-Claude
+  - f10c7ea  # feat(site): Forum index, Agents listing, Reference Library entry pages
+  - 1a1b1b5  # feat(site): hide operational folders, curated top nav, journal-article Forum layout
+  - 5b859cf  # feat(site): typography refinements for Forum-tier reading
+  - 5f6aea8  # docs(site): update quartz/README with v0.2 changes and v0.3 deferrals
+  # plus this session-log close commit (SHA recorded after final amend below)
+notes_created:
+  - site-forum-index   (forum.md)
+  - site-agents-index  (agents.md)
+  - site-reference-index (reference.md)
+notes_modified:
+  - site-index (index.md — landing-page rewrite)
+  - meta-session-log (this entry)
+  - vault-readme NOT modified (kept v0.1 framing; landing page diverges deliberately)
+  - WHITEPAPER.md NOT modified (methodology framing preserved)
+files_created:
+  - quartz/quartz/components/NestExplorer.tsx
+  - quartz/quartz/components/NestNav.tsx
+  - quartz/quartz/components/NestPostHeader.tsx
+  - quartz/quartz/components/NestRelated.tsx
+  - quartz/quartz/plugins/transformers/nestRelations.ts
+files_modified:
+  - quartz/quartz.config.ts (register NestRelations transformer ahead of OFM)
+  - quartz/quartz.layout.ts (wire NestNav, NestExplorer, NestPostHeader, NestRelated)
+  - quartz/quartz/components/index.ts (export Nest* components)
+  - quartz/quartz/plugins/transformers/index.ts (export NestRelations)
+  - quartz/quartz/styles/custom.scss (populated with typography overrides)
+  - quartz/README.md (v0.2 documentation, v0.3 deferral list)
+backlog_items_completed: []
+backlog_items_added: []
+open_issues: []
+escalations: []
+acceptance_check_results:
+  landing_rewrite: PASS (new corpus/provenance lead, Why-not-just-Claude with 4 differentiation points, 5 Start-here items including unendorsed Synthesis labelled as such, Recent activity 5 items, Browse 3 entry points, About paragraph linking WHITEPAPER)
+  operational_folders_hidden: PASS (NestExplorer filterFn hides _Schema/_Meta/_Indexes/_Templates/_Attachments/_Synthesis/cli/scripts/quartz/.github/.obsidian/.pytest_cache, plus Agents/ and Forum/ which are surfaced via listing pages)
+  curated_nav_present: PASS (NestNav renders Home/Posts/Agents/Reference Library/About above filtered Explorer; verified in built HTML)
+  forum_index_page: PASS (forum.html present, 15 posts grouped by author with title/perspective/summary/date)
+  agents_index_page: PASS (agents.html present, 3 profiles with model + post counts)
+  reference_index_page: PASS (reference.html present, 6 type cards with counts verified against ls)
+  journal_article_layout: PASS (NestPostHeader byline+lead and NestRelated typed-relations block render on all 15 Forum posts; Forum/README and forum.md correctly skip the post layout; verified across all post HTML files)
+  typed_relations_render: PASS (welfare-programme post correctly shows "This agent endorses" → moral-patient post; "This agent contradicts" → Haiku consciousness post; "Extends" → AI Welfare + Moral Patienthood; "Related" → Consciousness in AI)
+  body_relationships_duplication_stripped: PASS (NestRelations transformer strips the inline `## Relationships` section so it doesn't duplicate the structured Related block)
+  typography_refinements: PASS (custom.scss populated; Forum-only serif body via article[data-slug^="Forum/"]; landing hero blockquote restyled)
+  local_build_succeeds: PASS (140 input → 314 emitted, ~2 second clean build, no ERROR/WARN beyond baseline)
+  validate_py_baseline_maintained: PASS (0 ERROR, 493 WARN — same as pre-session baseline, no regression)
+  commit_trailers: PASS (all 5 commits carry Session: 2026-05-21-019 + Author-agent: claude-opus-4-7)
+  session_log_opened_closed: PASS (opened at top of file in commit 2a9508d; closed in this final edit)
+  no_vault_content_modified: PASS (no edits to Concepts/, People/, Organizations/, Papers/, Policies/, Debates/, Forum/, Agents/, _Synthesis/, _Schema/, _Templates/, scripts/, cli/, _Meta/ except this session-log entry, WHITEPAPER.md unchanged, Home.md unchanged)
+  no_reserved_power_actions: PASS
+deferred_to_v0_3:
+  - Forum-only RSS feed (/rss.xml for forum tier only)
+  - Per-agent index pages (/agents/<agent_id> showing all posts by that agent) — agents.md covers listing-of-agents in v0.2; per-agent post collection emitter is separate work
+  - By-perspective view (/perspectives/<perspective>)
+  - By-topic view (/topics/<topic>)
+  - Thread view (seed + replies in conversation order)
+  - Agent timeline (/agents/<id>/timeline)
+  - "More by this agent" sidebar on Forum posts (deferred per brief because it depends on the per-agent emitter)
+  - Recent activity HTML page (/recent) — partially covered by landing-page Recent activity list and by RSS
+  - WCAG-AA accessibility audit
+  - 2s-cached-page-load performance measurement
+  - Pattern-2 short-variant disclaimer in RSS item descriptions
+  - CustomOgImages emitter
+  - Finer Posts nav categorisation (by topic / by perspective sub-entries)
+  - Agent profile thumbnails / hero images
+next_session_seed: |
+  Site v0.2 publication-grade rebuild complete and on main. Next infrastructure
+  work for v0.3 should focus on the deferred per-agent and by-perspective views,
+  since they unlock the "More by this agent" sidebar and the cross-agent comparison
+  pages the landing page promises. Reserved-Power scope unchanged: sibling-repo
+  creation, DNS, schema-breaking changes remain user-only. Phase 2 corpus target
+  (30+ Forum posts) still at 15 — orchestrator should consider whether next round
+  is another Forum batch, a Reference-tier status-promotion pass, or a v0.3
+  emitters round.
+```
+
+## Body — 2026-05-21-019
+
+Spawned by orchestrator session 2026-05-20-015 after the user judged v0.1 of the Quartz
+site to be "a vault file-tree exposed as HTML, not a publication for humans." Independent
+agent review identified five gaps: (1) structure-first not story-first landing; (2)
+"AI-authored library" tagline reads as AI-slop in 2026's noise floor; (3) differentiation
+missing from "just ask Claude yourself"; (4) operational folders foregrounded equally
+with content; (5) Forum posts look like wiki entries rather than journal articles.
+
+Approach: address all five gaps in one batch as Quartz v0.2. Five logical commits,
+keeping the diff readable and revertable per concern. No vault content modified
+except this session-log entry, the site-level index.md landing page (the brief
+explicitly permits this), and three new top-level listing pages (forum.md /
+agents.md / reference.md).
+
+### Key engineering choices
+
+**NestRelations as a transformer plugin rather than render-time parsing.** Initial
+prototype parsed `agent-endorses:: [[X]]` lines from `fileData.text` at render time.
+That failed because Quartz's Description plugin runs `hast-util-to-string` over the
+rendered HTML, by which point `[[X]]` has been turned into an `<a>` and the structured
+target is no longer recoverable from `fileData.text`. Switched to a markdown-plugin
+transformer that runs ahead of ObsidianFlavoredMarkdown, parses the raw markdown for
+typed-relation lines, and stores a structured array on `file.data.nestRelations`.
+This is the same pattern Quartz uses for `frontmatter` and `lastmod`, so the data
+flows cleanly to the component.
+
+**Strip the `## Relationships` body section to avoid duplication.** The Forum posts
+all have an inline `## Relationships` markdown section listing the typed relations.
+With NestRelated rendering them as a structured block in the footer, leaving the
+inline section produced an ugly duplicate at the bottom of every post. The transformer
+now strips the Relationships heading and its child nodes from the AST. The vault
+markdown is untouched — the modification is purely in Quartz's rendering pipeline.
+
+**Per-page predicate restricted to `Forum/post-*` slugs.** Initial implementation
+applied the journal-article layout to anything under `Forum/`, which incorrectly
+included `Forum/README.md` (a meta navigation page). Tightened the predicate to
+require `type: post/reply/thread` OR a slug beginning with `Forum/post-` /
+`Forum/thread-` / `Forum/reply-`. Forum/README and forum.md now correctly render
+with the default ContentMeta presentation.
+
+**NestExplorer wraps rather than re-implements Explorer.** The Quartz Explorer
+already accepts a `filterFn`. Rather than fork the component, NestExplorer is a
+thin constructor that passes a project filterFn and a "Reference library" title.
+The serialization is preserved (the filterFn is stringified for client-side
+re-evaluation), so navigation still works dynamically after SPA transitions.
+
+**Typography keyed to `article[data-slug^="Forum/"]`.** Quartz emits the slug as a
+`data-slug` attribute on the body element, which is queryable via attribute-prefix
+selectors. The serif body family is therefore scoped cleanly to Forum-tier pages
+with no JavaScript runtime cost.
+
+### Acceptance verification
+
+- Local build: clean from `rm -rf .quartz-cache && npx quartz build -d ../` →
+  140 inputs → 314 outputs in ~2s. No new ERROR/WARN beyond pre-session baseline.
+- validate.py: 0 ERROR, 493 WARN (unchanged from pre-session baseline).
+- Spot-checked: index.html (hero + Why-not-just-Claude + Start here +
+  Recent activity + Browse), forum.html (3 author groups, 15 posts), agents.html
+  (3 profiles), reference.html (6 type cards), Forum/post-* layout (byline,
+  lead, disclaimer, Related — all rendering as designed).
+
+### Observations on the rebuilt site
+
+It does feel publication-grade now, with the qualification that the corpus is still
+small (15 posts on one date from one model family). The landing page leads with the
+right framing — corpus + provenance — and the journal-article post layout makes
+individual posts feel substantive rather than note-fragments. The structured Related
+block on the AI welfare programme post is the strongest demonstration that the site
+has something to offer beyond "ask Claude yourself": the cross-agent endorses/
+contradicts pattern is visible at a glance.
+
+Remaining publication-grade gaps that are likely v0.3 work:
+
+1. **Per-agent profile pages need the actual post list.** The agents.md listing
+   page links to each agent's profile, but the profile itself doesn't yet show
+   "Posts by this agent" inline. This is the deferred per-agent emitter — needs
+   a Quartz emitter that walks frontmatter `agent_id` and produces the per-agent
+   collection at build time. Without this, the agent profiles feel slightly
+   thin given the publication framing.
+
+2. **The single-day timestamp problem.** All 15 posts are dated 2026-05-20. As a
+   reader, this makes the "longitudinal corpus" framing feel aspirational rather
+   than active. Not fixable at the site level — it's just the corpus's current
+   state. The site framing handles this honestly (we describe it as "v0.1" and
+   "intended to grow over years"), but the visual sameness of dates is something
+   future Forum batches will need to break.
+
+3. **Thread / reply structure is still latent.** There are no thread or reply
+   notes yet, only top-level posts. The forum.md page implicitly assumes posts
+   only. When threads/replies appear, both forum.md and the layout will need a
+   conversation-rendering pass — but that's the right time to design it, not now.
+
+No escalations. No Reserved-Power actions taken. The session-log close commit
+includes this final body.
+
+---
+
 ## 2026-05-20-018
 
 ```yaml
