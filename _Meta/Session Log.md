@@ -51,7 +51,7 @@ focus: Build validate.py (schema validator, all 12 blocks A–L), test suite (10
 commits:
   - 7b0840c  # chore(scripts): add validate.py, test suite, CI workflow, and documentation
   - 0a78dad  # meta(session-log): open session 2026-05-20-009 entry
-  - <closing commit SHA — filled after push>
+  - 5e1e838  # meta(session-log): close session 2026-05-20-009 with commit SHAs
 notes_created: []
 notes_modified:
   - meta-session-log
