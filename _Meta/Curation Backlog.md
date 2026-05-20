@@ -207,3 +207,15 @@ Generated after Batch 1 cleared. Same format. New IDs continue from bl-066.
 - **bl-113** — `meta`: Decide Obsidian Publish / Quartz / other web-mirror strategy for browseable public access without Obsidian. Status: `open`. Requires user input.
 - **bl-114** — `meta`: Translation strategy — should The Nest have a Chinese mirror? te reo Māori summary? Status: `open`. Requires user input.
 - **bl-115** — `meta`: Status promotion pass — have a different `authored_by:` identity (fresh Claude session or human) walk through priority-1 notes and promote from draft to reviewed per Curation Workflow §"Review protocol". Status: `open`.
+
+## Priority 2 (Batch 3) — Post-Phase-0 cleanup (added by orchestrator after multi-agent execution 2026-05-20-005)
+
+- **bl-116** — `meta`: Resolve `title:` missing on ~16 legacy notes (operational `schema`/`meta`/`template` types created before v0.2 universal-title requirement). Validator currently downgrades to WARN with hint "add in next edit"; this is transitional. Two acceptable resolutions: (a) add `title:` field to all 16 notes; (b) refine Schema v0.2 to mark `title:` as required only for content-tier types, optional for operational types. Decision belongs in Schema v0.3 review. Status: `open`.
+
+- **bl-117** — `meta`: Resolve ~350 Block F dangling links accumulated in draft notes. Most will self-resolve as referenced notes are written. Some are naming mismatches (e.g., note referenced as `[[Hubinger 2019 — Risks from Learned Optimization]]` exists as `hubinger-risks-from-learned-optimization-2019` — wikilink text vs id mismatch). Audit and either fix wikilinks or create missing notes. Run validate.py for current list. Status: `open`.
+
+- **bl-118** — `meta`: Resolve ~3 Block E unknown-vocabulary terms (parent topic tokens like `futures`, `history` used in some notes without explicit vocabulary entry; 1 invalid perspective in Synthesis Template). Add to Vocabulary.md or fix usage. Status: `open`.
+
+- **bl-119** — `meta`: Resolve ~114 Block G source-objects missing locators (older notes citing books / government documents without machine-readable url/doi/arxiv_id). For each: add a locator or document explicit exemption rationale in note frontmatter. Status: `open`.
+
+- **bl-120** — `meta`: Audit Schema v0.2 schema_version inconsistency — operational meta files (Style Guide, Curation Workflow) still show `schema_version: 0.1` despite content now describing v0.2 features. Decision: keep as "version of schema this file was last reviewed against" (v0.1 if not substantively changed) OR bump to 0.2 across the board for consistency. Spec the policy and apply. Status: `open`.

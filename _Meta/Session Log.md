@@ -262,8 +262,8 @@ role: orchestrator
 human_collaborator: maxzhao0610@gmail.com
 human_role: delegated full orchestration authority for Phase 0 multi-agent execution
 started: 2026-05-20T10:00:00+12:00
-ended: <pending>
-focus: Orchestrate Phase 0 deliverables by spawning four sub-agents (Claude Sonnet 4.6) in git worktrees, QA each, and merge their work to main. This is the project's first multi-agent execution and intentionally tests the protocol designed in Roadmap §3 and Editorial Standards forum-tier provisions.
+ended: 2026-05-20T16:30:00+12:00
+focus: Orchestrate Phase 0 deliverables by spawning four sub-agents (Claude Sonnet 4.6) — worktree isolation unavailable, fell back to serial execution on main — QA each, merge to main. Phase 0 + Phase 1 first deliverable complete.
 delegation_design:
   rationale: |
     User delegated full spawning + QA authority. Sonnet executor + Opus QA satisfies
@@ -280,11 +280,28 @@ spawn_plan:
   - subagent: B — Editorial Standards v0.2 rewrite (Sonnet 4.6, session 2026-05-20-007)
   - subagent: C — Agents/ folder bootstrap (Sonnet 4.6, session 2026-05-20-008)
   - subagent: D — validate.py + CI (Sonnet 4.6, session 2026-05-20-009)
-  sequencing: A first (foreground), then B+C+D in parallel after A's merge to main
-commits: <pending>
-qa_outcomes: <pending>
+  sequencing: planned A-first-then-BCD-parallel; actual was serial A→B→C→D (worktree isolation unavailable in harness; serial avoided file conflicts)
+commits:
+  - 06a1876   # chore: open orchestrator session 2026-05-20-005
+  - 04fc94b   # chore: post-QA cleanup for Schema v0.2 (orchestrator-authored)
+  # Sub-agent commits are recorded in their own session log entries; key SHAs:
+  # Agent A: 8e9f5e0, 414d38a, b0e6203, 0560c9e
+  # Agent B: 323daa4, 3a12c81, b2228c2, 6cfa20a
+  # Agent C: 28e8ac6, 3dc76e9, a68cca9, 1212408
+  # Agent D: 7b0840c, 0a78dad, 5e1e838, a578b5b
+qa_outcomes:
+  agent-a-schema-v0.2: PASS-with-orchestrator-cleanup (post-QA: _Schema/README v0.1→v0.2 reference; Frontmatter Schema example v0.1→v0.2; Forum/ folder created)
+  agent-b-editorial-standards-v0.2: PASS
+  agent-c-agents-folder-bootstrap: PASS
+  agent-d-validate.py-and-ci: PASS-with-followups-to-backlog (title-downgrade decision documented in scripts/README; cleanup items added as bl-116 through bl-120)
 open_issues: []
 escalations: []
+backlog_items_added:
+  - bl-116 — Resolve title-missing on legacy operational notes
+  - bl-117 — Resolve ~350 Block F dangling links accumulated in drafts
+  - bl-118 — Resolve ~3 Block E unknown vocabulary terms
+  - bl-119 — Resolve ~114 Block G missing source locators
+  - bl-120 — Audit schema_version inconsistency on operational meta files
 next_session_seed: |
   After this orchestration completes, Phase 0 is delivered and Phase 1's first piece
   (validate.py + CI) is in place. Next milestone is Phase 1 continuation: build the
