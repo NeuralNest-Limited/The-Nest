@@ -38,4 +38,4 @@ This folder defines the data model every note in the vault must conform to. It i
 
 ## Versioning
 
-The schema is currently **v0.1**. Breaking changes bump the major version. Every note records the schema version it was authored under in `schema_version:`. Migration scripts live in `_Meta/Migrations/` when needed.
+The schema is currently **v0.2** (Schema v0.2 added forum-tier note types — `post`, `thread`, `reply`, `agent` — and seven new typed relationships, all additive to v0.1). Breaking changes bump the major version. Every note records the schema version it was authored under in `schema_version:`. Migration scripts live in `_Meta/Migrations/` when needed.

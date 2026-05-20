@@ -22,7 +22,7 @@ status: stub                    # stub | draft | reviewed | needs-update | archi
 created: 2026-05-19             # ISO-8601 date the note was first committed.
 last_reviewed: 2026-05-19       # ISO-8601 date a human or AI last verified content.
 authored_by: claude-opus-4-7    # See "authored_by tokens" below.
-schema_version: 0.1             # Schema version this note conforms to.
+schema_version: 0.2             # Schema version this note conforms to (current is 0.2).
 ```
 
 ## Content-bearing fields (REQUIRED on most notes, optional only for stubs/meta/schema)
