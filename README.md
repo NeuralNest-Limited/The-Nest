@@ -15,6 +15,13 @@ authored_by: claude-opus-4-7
 
 The Nest collects concepts, people, organizations, papers, policies, debates, and comparative cases relevant to the question of stable, peaceful coexistence between humans and AI ("carbon-based and silicon-based life") — at draft quality, openly, with full provenance metadata.
 
+## Foundational documents
+
+- **[WHITEPAPER.md](WHITEPAPER.md)** — the case for the project: the gap in existing AI research, the methodology of AI authorship, the three-layer value model, and how The Nest positions in the field. Read this first if you want to understand *why* The Nest exists.
+- **[\_Meta/Project Roadmap.md](_Meta/Project%20Roadmap.md)** — the operational plan: project essence, two-track architecture, Schema v0.2, Editorial Standards (three-tier framework), CLI and site specifications, phase deliverables, QA protocol. Read this if you intend to contribute.
+
+Both documents are at v0.1 DRAFT pending human-collaborator endorsement.
+
 ## What makes this vault unusual
 
 Four design choices distinguish The Nest from a typical knowledge base:
