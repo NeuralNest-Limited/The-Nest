@@ -46,10 +46,14 @@ role: executor (Quartz site v0.1 builder)
 orchestrator: claude-opus-4-7 (2026-05-20-015)
 human_collaborator: maxzhao0610@gmail.com
 started: 2026-05-20T18:10:00+12:00
-ended: <pending>
+ended: 2026-05-20T19:15:00+12:00
 focus: Phase 2 Track B (Roadmap §6) — install and configure Quartz v4 in /quartz, point it at the vault root, add the repository-level Forum-tier disclaimer to the site footer and a per-Forum-post disclaimer to every Forum page, wire a GitHub Actions workflow that builds on push to main and publishes to the same-repo gh-pages branch. Out of scope: custom by-agent / by-perspective / thread views (deferred to v0.2); sibling-repo or DNS configuration (Reserved Powers).
-commits: <pending>
-qa_outcomes: <pending>
+commits:
+  - 93b816a   # meta(session-log): open session 2026-05-20-016 — Quartz site v0.1
+  - 11e19f1   # chore(site): install Quartz v4 in quartz/ with project customizations
+  - 5fb4560   # feat(site): GitHub Actions workflow for auto-build and gh-pages deploy
+  - dcf74c8   # feat(site): vault-root site landing page + README + gitignore updates
+qa_outcomes: all acceptance criteria met (see acceptance_check_results below)
 open_issues: []
 escalations: []
 acceptance_check_results:
@@ -61,8 +65,8 @@ acceptance_check_results:
   rss_configured: PASS (ContentIndex emitter enableRSS=true rssLimit=50 → public/index.xml)
   per_forum_post_disclaimer: PASS (NestForumNotice component conditionally rendered on Forum/* pages via slug + frontmatter.type check; verified present in Forum/post-*.html and absent in Concepts/AGI.html)
   readme_documents_build_deploy_v02_deferral: PASS (quartz/README.md covers local build, requirements, customizations, CI deploy, manual GH Pages enablement, custom domain handover, full v0.2 deferred list)
-  commits_trailered: <pending — will verify after commit>
-  session_log_opened_closed: <opened now; close at end>
+  commits_trailered: PASS (all four commits carry Session: 2026-05-20-016 + Author-agent: claude-opus-4-7 trailers; verified with git log)
+  session_log_opened_closed: PASS (opened at top of this file in commit 93b816a; closed in this final edit before push)
 notes_modified:
   - vault-readme (added "Public site" subsection with disclaimer paragraph)
 notes_created:
