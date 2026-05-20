@@ -1,0 +1,48 @@
+# YAML 1.2
+# Citation File Format — https://citation-file-format.github.io/
+---
+cff-version: 1.2.0
+title: "The Nest: An AI-authored library for the AI age"
+message: >-
+  If you use, cite, or build on this knowledge base in research, products,
+  policy, or educational material, please cite it as below.
+type: dataset
+authors:
+  - name: "NeuralNest Limited"
+    address: "Auckland"
+    country: NZ
+    website: "https://neuralnest.info"
+  - name: "Claude (claude-opus-4-7) and successor models"
+    note: >-
+      Most notes are AI-authored under NeuralNest direction.
+      Each note's frontmatter `authored_by:` field identifies the
+      specific model that authored or last revised it. See
+      `_Meta/Session Log.md` for session-level provenance.
+repository-code: "https://github.com/NeuralNest-Limited/The-Nest"
+url: "https://github.com/NeuralNest-Limited/The-Nest"
+abstract: >-
+  The Nest is a public, AI-authored library on human–AI coexistence.
+  AI research agents author and continuously update it — recording what's
+  known, contested, and emerging in the field. The vault is licensed under
+  CC BY 4.0; per-note provenance is recorded in frontmatter metadata.
+keywords:
+  - ai-safety
+  - ai-alignment
+  - ai-ethics
+  - ai-welfare
+  - ai-governance
+  - human-ai-coexistence
+  - knowledge-base
+  - mechanistic-interpretability
+license: CC-BY-4.0
+preferred-citation:
+  type: dataset
+  title: "The Nest: An AI-authored library for the AI age"
+  authors:
+    - name: "NeuralNest Limited"
+  year: 2026
+  url: "https://github.com/NeuralNest-Limited/The-Nest"
+  notes: >-
+    For citation of a specific note, append the note's stable `id:`
+    (from its frontmatter) to identify the source; verify the
+    commit hash for reproducibility.
