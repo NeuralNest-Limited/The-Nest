@@ -51,7 +51,7 @@ focus: Bootstrap Agents/ folder — create README, two agent profiles (Claude Op
 commits:
   - 28e8ac6   # note(agents): bootstrap Agents/ folder with README and two agent profiles
   - 3dc76e9   # index(home): add MOC — Agents link to By type navigation; bump last_reviewed
-  - <session-log-close SHA pending>
+  - a68cca9   # meta(session-log): close session 2026-05-20-008 with commit SHAs
 notes_created:
   - agents-readme
   - anthropic-claude-opus-4-7
