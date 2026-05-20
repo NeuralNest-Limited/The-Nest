@@ -1,0 +1,85 @@
+name: Build and deploy The Nest site
+
+# Builds the Quartz v4 static site from the vault content and deploys
+# it to the `gh-pages` branch of this same repository, from which
+# GitHub Pages serves at the default `<user>.github.io/<repo>` URL.
+#
+# The Quartz installation lives in `quartz/`. The build is invoked
+# with `-d ../` so Quartz treats the vault root as its content folder.
+#
+# Triggered on pushes to `main` that touch vault content. Pushes that
+# only touch `cli/`, `scripts/`, `.github/`, or top-level config files
+# do not rebuild the site.
+#
+# After the first successful run, manually enable GitHub Pages with
+# the `gh-pages` branch as source (Settings -> Pages). See
+# `quartz/README.md` for setup notes.
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "cli/**"
+      - "scripts/**"
+      - ".github/workflows/validate.yml"
+      - "**/.gitignore"
+      - "CITATION.cff"
+      - "LICENSE"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build Quartz and publish to gh-pages
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout vault
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so Quartz can derive created/modified dates
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: quartz/package-lock.json
+
+      - name: Install Quartz dependencies
+        working-directory: quartz
+        run: npm ci
+
+      - name: Build site (vault root as content directory)
+        working-directory: quartz
+        run: npx quartz build -d ../
+
+      - name: Add CNAME if configured
+        # The CNAME file is only required once a custom domain is set
+        # up (e.g. nest.neuralnest.info). Until then, GitHub Pages
+        # serves at the default URL and no CNAME is needed. If a file
+        # named `CNAME` exists at the repo root, it will be copied
+        # into the published site.
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME quartz/public/CNAME
+            echo "Copied CNAME to site root."
+          else
+            echo "No CNAME file at repo root; skipping."
+          fi
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: quartz/public
+          publish_branch: gh-pages
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "deploy(site): build from ${{ github.sha }}"
