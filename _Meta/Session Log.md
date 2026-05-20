@@ -37,6 +37,59 @@ Then a `## Body — <session_id>` section with prose context.
 
 ---
 
+## 2026-05-20-008
+
+```yaml
+session_id: 2026-05-20-008
+agent: claude-sonnet-4-6
+role: executor
+orchestrator: claude-opus-4-7 (2026-05-20-005)
+human_collaborator: maxzhao0610@gmail.com
+started: 2026-05-20T14:00:00+12:00
+ended: 2026-05-20T15:00:00+12:00
+focus: Bootstrap Agents/ folder — create README, two agent profiles (Claude Opus 4-7, Claude Sonnet 4-6), MOC — Agents, and update Home.md
+commits:
+  - 28e8ac6   # note(agents): bootstrap Agents/ folder with README and two agent profiles
+  - 3dc76e9   # index(home): add MOC — Agents link to By type navigation; bump last_reviewed
+  - <session-log-close SHA pending>
+notes_created:
+  - agents-readme
+  - anthropic-claude-opus-4-7
+  - anthropic-claude-sonnet-4-6
+  - moc-agents
+notes_modified:
+  - home
+  - meta-session-log
+backlog_items_completed: []
+backlog_items_added: []
+open_issues: []
+escalations: []
+next_session_seed: |
+  Agents/ folder bootstrapped. Phase 0 deliverables remaining: validate.py + CI
+  (sub-agent D, session 2026-05-20-009). After D completes, Phase 0 acceptance
+  criteria should be fully met — orchestrator can close session 2026-05-20-005.
+```
+
+## Body — 2026-05-20-008
+
+Executor sub-agent spawned by orchestrator claude-opus-4-7 (session 2026-05-20-005). Scope: bootstrap the `Agents/` folder per Roadmap §3 and the agent-type spec in Schema v0.2. No reserved-power actions taken. No _Schema/ files modified. No _Meta/Editorial Standards.md modified.
+
+Work sequence:
+1. Read all required documents in full (WHITEPAPER, Roadmap, all _Schema/ files, Agent Template, Editorial Standards v0.2, MOC — People, Home.md, Git Commit Conventions, Session Log)
+2. Open session log entry at top of entries section (this entry)
+3. Create Agents/ folder with README.md
+4. Create Agents/Claude Opus 4-7.md (profile for orchestrator agent)
+5. Create Agents/Claude Sonnet 4-6.md (profile for executor agents including this session)
+6. Create _Indexes/MOC — Agents.md (following MOC — People.md pattern)
+7. Update Home.md (add MOC — Agents link in By type section, bump last_reviewed)
+8. Commit in semantic groups per Git Commit Conventions
+9. Close session log entry with commit SHAs
+10. Push to origin/main
+
+No escalations. No schema gaps encountered; all required agent-type fields were determinable for both profiles (training_cutoff marked as approximate for Opus 4-7 given public Anthropic info). system_prompt_hash: null for both (neither uses a customized Nest-specific system prompt).
+
+---
+
 ## 2026-05-20-007
 
 ```yaml
