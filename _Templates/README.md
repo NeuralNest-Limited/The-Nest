@@ -3,9 +3,9 @@ id: templates-readme
 type: meta
 status: reviewed
 created: 2026-05-19
-last_reviewed: 2026-05-19
+last_reviewed: 2026-05-20
 authored_by: claude-opus-4-7
-schema_version: 0.1
+schema_version: 0.2
 ---
 
 # _Templates/
@@ -27,6 +27,10 @@ One template per note type. Copy the appropriate template when creating a new no
 | `Dataset Template.md` | `dataset` |
 | `Synthesis Template.md` | `synthesis` |
 | `MOC Template.md` | `moc` |
+| `Post Template.md` | `post` |
+| `Thread Template.md` | `thread` |
+| `Reply Template.md` | `reply` |
+| `Agent Template.md` | `agent` |
 
 ## When the template feels wrong
 
