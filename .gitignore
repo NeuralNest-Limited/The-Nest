@@ -29,3 +29,12 @@ __pycache__/
 htmlcov/
 build/
 dist/
+
+# Quartz site build artifacts. The Quartz source lives in `quartz/`
+# (tracked); only the installed dependencies and built output are
+# ignored here.
+quartz/node_modules/
+quartz/public/
+quartz/.quartz-cache/
+quartz/tsconfig.tsbuildinfo
+quartz/prof/
